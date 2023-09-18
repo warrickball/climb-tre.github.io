@@ -1,4 +1,7 @@
 site_name: CLIMB-TRE
+site_url: https://climb-tre.github.io/
+repo_url: https://github.com/CLIMB-TRE/climb-tre.github.io/
+site_author: CLIMB-TRE team
 theme:
   name: material
 
@@ -11,7 +14,9 @@ plugins:
             docstring_style: numpy
             docstring_section_style: spacy
             show_source: false
-  - with-pdf
+  - with-pdf:
+      output_path: climb-tre.pdf
+      cover_subtitle: ""
 
 nav:
   - Home: index.md
