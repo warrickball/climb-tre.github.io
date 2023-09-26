@@ -70,11 +70,26 @@ To log in to your Onyx account, run the following command and enter your passwor
 (onyx-env) $ onyx login
 ```
 
-## View data
+## View available projects
 
-Once logged in, contact an admin to get permission to view specific projects. 
+Once logged in, run the following command to view all the projects available to you:
 
-Then, to view all data from a project:
+```
+(onyx-env) $ onyx projects
+```
+
+If you cannot see the projects that you require access to, contact an admin.
+
+If you can see your intended project, then you can run the following to view the fields available within that project:
+
+```
+(onyx-env) $ onyx fields <project-name>
+```
+
+
+## View data from a project
+
+To view all data from a project:
 
 ```
 (onyx-env) $ onyx filter <project-name>
@@ -86,11 +101,7 @@ To export that data to a `.tsv` file:
 (onyx-env) $ onyx filter <project-name> --format tsv > data.tsv
 ```
 
-To view the set of filterable fields in a project:
-
-```
-(onyx-env) $ onyx fields <project-name>
-```
+You can also filter the data so that it falls within various requirements on its fields.
 
 ### Examples
 
@@ -121,4 +132,4 @@ For further guidance using the Onyx client, use the `--help` option.
 (onyx-env) $ onyx filter --help
 ```
 
-Or, check out the README file on the Onyx client's [GitHub page](https://github.com/CLIMB-TRE/onyx-client).
+For more information, such as how to use the Python API, check out the README file on the Onyx client's [GitHub page](https://github.com/CLIMB-TRE/onyx-client).
