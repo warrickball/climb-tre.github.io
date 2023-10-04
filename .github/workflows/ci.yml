@@ -1,4 +1,4 @@
-name: ci 
+name: ci
 on:
   push:
     branches:
@@ -13,7 +13,7 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: 3.x
-      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV 
+      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
       - uses: actions/cache@v3
         with:
           key: mkdocs-material-${{ env.cache_id }}
@@ -21,6 +21,7 @@ jobs:
           restore-keys: |
             mkdocs-material-
       - run: |
+          python3 metadata/json2md.py metadata/example_metadata_spec.json --title "Example Metadata Spec" > docs/example_metadata_spec.md
           pip install 'onyx @ git+https://github.com/CLIMB-TRE/onyx-client@0b791a8237e0418aa42a2e0f98bac587d7afb95a'
           pip install 'varys @ git+https://github.com/CLIMB-TRE/varys@40b58eede873c5ae5327540ee767a77bb0cf73fe'
           pip install mkdocs-material

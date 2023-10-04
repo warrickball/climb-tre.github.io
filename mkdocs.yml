@@ -21,3 +21,4 @@ plugins:
 nav:
   - Home: index.md
   - Onyx Client Installation Guide: onyx_client_installation_guide.md
+  - Example Metadata Spec: example_metadata_spec.md
