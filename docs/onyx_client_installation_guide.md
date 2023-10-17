@@ -22,7 +22,7 @@ Install the client within this environment:
 
 ```
 $ source onyx-env/bin/activate
-(onyx-env) $ pip install ./onyx-client/
+$ pip install ./onyx-client/
 ```
 
 ## Create a config
@@ -37,7 +37,7 @@ For this you need to provide:
 For example:
 
 ```
-(onyx-env) $ onyx config create --domain https://onyx-test.climb.ac.uk --config-dir onyx-config
+$ onyx config create --domain https://onyx-test.climb.ac.uk --config-dir onyx-config
 ```
 
 Once this is done, you **must** export the environment variable `ONYX_CLIENT_CONFIG` as the path to the config directory.
@@ -57,7 +57,7 @@ For this you need to provide:
 For example:
 
 ```
-(onyx-env) $ onyx register
+$ onyx register
 ```
 
 And then follow the instructions.
@@ -67,7 +67,7 @@ And then follow the instructions.
 To log in to your Onyx account, run the following command and enter your password:
 
 ```
-(onyx-env) $ onyx login
+$ onyx login
 ```
 
 ## View available projects
@@ -75,7 +75,7 @@ To log in to your Onyx account, run the following command and enter your passwor
 Once logged in, run the following command to view all the projects available to you:
 
 ```
-(onyx-env) $ onyx projects
+$ onyx projects
 ```
 
 If you cannot see the projects that you require access to, contact an admin.
@@ -83,7 +83,7 @@ If you cannot see the projects that you require access to, contact an admin.
 If you can see your intended project, then you can run the following to view the fields available within that project:
 
 ```
-(onyx-env) $ onyx fields <project-name>
+$ onyx fields <project-name>
 ```
 
 
@@ -92,13 +92,13 @@ If you can see your intended project, then you can run the following to view the
 To view all data from a project:
 
 ```
-(onyx-env) $ onyx filter <project-name>
+$ onyx filter <project-name>
 ```
 
 To export that data to a `.tsv` file:
 
 ```
-(onyx-env) $ onyx filter <project-name> --format tsv > data.tsv
+$ onyx filter <project-name> --format tsv > data.tsv
 ```
 
 You can also filter the data so that it falls within various requirements on its fields.
@@ -108,19 +108,19 @@ You can also filter the data so that it falls within various requirements on its
 To filter for all samples published on a specific date (e.g. `2023-09-18`):
 
 ```
-(onyx-env) $ onyx filter <project-name> --field published_date 2023-09-18
+$ onyx filter <project-name> --field published_date 2023-09-18
 ```
 
 To filter for all samples published on the current date, you can use the keyword `today`:
 
 ```
-(onyx-env) $ onyx filter <project-name> --field published_date today
+$ onyx filter <project-name> --field published_date today
 ```
 
 To filter for all samples with a `published_date` within the dates `2023-09-01` and `2023-09-18`, you can use the `range` filter: 
 
 ```
-(onyx-env) $ onyx filter <project-name> --field published_date__range 2023-09-01,2023-09-18
+$ onyx filter <project-name> --field published_date__range 2023-09-01,2023-09-18
 ```
 
 ## Further guidance
@@ -128,8 +128,8 @@ To filter for all samples with a `published_date` within the dates `2023-09-01` 
 For further guidance using the Onyx client, use the `--help` option.
 
 ```
-(onyx-env) $ onyx --help
-(onyx-env) $ onyx filter --help
+$ onyx --help
+$ onyx filter --help
 ```
 
 For more information, such as how to use the Python API, check out the README file on the Onyx client's [GitHub page](https://github.com/CLIMB-TRE/onyx-client).
