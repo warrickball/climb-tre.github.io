@@ -17,8 +17,16 @@ plugins:
   - with-pdf:
       output_path: climb-tre.pdf
       cover_subtitle: ""
+      debug_html: true
+      show_anchors: true
+      verbose: true
 
 nav:
   - Home: index.md
+  - Getting started:
+    - Uploading data: upload.md
+    - Analysing data: analyse.md
+  - Project specs:
+    - Common structure: common.md
+    - PATH-SAFE: pathsafe.md
   - Onyx Client Installation Guide: onyx_client_installation_guide.md
-  - Example Metadata Spec: example_metadata_spec.md

@@ -1,17 +1,11 @@
-# Welcome to MkDocs
+# CLIMB-TRE
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+The CLIMB Trusted Research Environment (CLIMB-TRE) project provides tools
+with which users can upload metagenomics data, with metadata, and analyse
+them on [CLIMB](https://www.climb.ac.uk/).
 
-## Commands
-
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
-
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+This site documents how to use the CLIMB-TRE tools
+and is distinct from more general
+[documentation on using CLIMB](https://docs.climb.ac.uk/).
+Read further for general information on how to [upload](upload/)
+or [analyse](analyse/) data.

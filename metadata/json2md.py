@@ -4,7 +4,9 @@ from argparse import ArgumentParser
 
 parser = ArgumentParser()
 parser.add_argument('json_filename', type=str)
-parser.add_argument('--title', type=str)
+parser.add_argument('-t', '--title', type=str)
+parser.add_argument('-d', '--depth', type=int, default=1,
+                    help="header depth of title (default=1)")
 args = parser.parse_args()
 
 import sys
@@ -19,7 +21,7 @@ required = [
 ]
 optional = [row[:] for row in required]  # deep copy
 
-for k, v in j['data'].items():
+for k, v in j['data']['fields'].items():
     try:
         row = [f"`{k}`", f"`{v['type']}`", v['description']]
 
@@ -32,10 +34,10 @@ for k, v in j['data'].items():
         print("WARNING: could not create entry for key %s" % k, file=sys.stderr)
 
 if args.title:
-    print('# ' + args.title)
+    print('#'*args.depth + ' ' + args.title)
     print()
 
-print('## Required\n')
+print('#'*args.depth + '# Required\n')
 print(''.join(['| ' + ' | '.join(row) + ' |\n' for row in required]))
-print('## Optional\n')
+print('#'*args.depth + '# Optional\n')
 print(''.join(['| ' + ' | '.join(row) + ' |\n' for row in optional]))
