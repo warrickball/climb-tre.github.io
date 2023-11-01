@@ -14,14 +14,14 @@ with open(args.json_filename, 'r') as f:
     j = json.load(f)
 
 required = [
-    ['Column name', 'Data type', 'Description'],
+    ['Field name', 'Data type', 'Description'],
     ['-----']*3,
 ]
 optional = [row[:] for row in required]  # deep copy
 
 for k, v in j['data'].items():
     try:
-        row = [k, v['type'], v['description']]
+        row = [f"`{k}`", f"`{v['type']}`", v['description']]
 
         if v['required']:
             required.append(row)
