@@ -29,4 +29,5 @@ nav:
   - Project specs:
     - Common structure: common.md
     - PATH-SAFE: pathsafe.md
+    - mSCAPE: mscape.md
   - Onyx Documentation: https://CLIMB-TRE.github.io/onyx-client/
