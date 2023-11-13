@@ -9,7 +9,7 @@ We recommend doing this using the AWS or `s3cmd` command-line tools.
 For general information about how to upload data to CLIMB,
 see the CLIMB docs on
 [setting up `s3cmd` locally](https://docs.climb.ac.uk/storage/upload-local-to-s3/#using-s3cmd-on-the-command-line)
-and [running `s3cmd` locally or on BRYN](https://docs.climb.ac.uk/storage/fetch-s3-to-notebook/).
+and [running `s3cmd` locally or on Bryn](https://docs.climb.ac.uk/storage/fetch-s3-to-notebook/).
 You may also wish to review the overall
 [CLIMB storage documentation](https://docs.climb.ac.uk/storage/).
 
@@ -133,7 +133,7 @@ in the metadata specs but are usually of the form
 We'll use `mscape-public-illumina-test`, so the command to "put"
 the three files in the bucket would be
 ```
-$ s3cmd put mscape.test-sample-id-01.test-run-01.illumina.csv mscape.test-sample-id-01.test-run-01.1.fastq.gz mscape.test-sample-id-01.test-run-01.2.fastq.gz s3://mscape-public-illumina-prod
+$ s3cmd put mscape.test-sample-id-01.test-run-01.csv mscape.test-sample-id-01.test-run-01.1.fastq.gz mscape.test-sample-id-01.test-run-01.2.fastq.gz s3://mscape-public-illumina-test
 ```
 You should then see the progress of your upload (the files might be split into parts),
 after which you're back at the terminal.
