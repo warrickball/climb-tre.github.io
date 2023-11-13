@@ -7,5 +7,5 @@ them on [CLIMB](https://www.climb.ac.uk/).
 This site documents how to use the CLIMB-TRE tools
 and is distinct from more general
 [documentation on using CLIMB](https://docs.climb.ac.uk/).
-Read further for general information on how to [upload](upload/)
-or [analyse](analyse/) data.
+Read further for general information on how to [upload](upload.md)
+or [analyse](analyse.md) data.

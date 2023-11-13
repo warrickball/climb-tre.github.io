@@ -43,6 +43,7 @@ For *ONT* sequencing data, the extensions (`[extension]`) should be
 ## Valid characters
 
 The `[sample_id]`, `[run_name]` and `[extension]` must contain only
+
 * letters (`A-Z`, `a-z`),
 * numbers (`0-9`),
 * hyphens (`-`) or
