@@ -6,7 +6,7 @@ Once data and metadata have been ingested into the Onyx database, you
 can query it using the Onyx client, which provides a command line interface (CLI)
 and Python API.  This short example
 demonstrates a few principal functions.  More are described in the
-[`onyx-client` documentation](https://github.com/CLIMB-TRE/onyx-client).
+[`onyx-client` documentation](https://climb-tre.github.io/onyx-client/).
 
 This guide also assumes that you're using a Notebook Server on CLIMB,
 so that once installed, the Onyx client will automatically be configured.
