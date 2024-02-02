@@ -23,7 +23,7 @@ optional = [row[:] for row in required]  # deep copy
 
 for k, v in j['fields'].items():
     try:
-        row = [f"`{k}`", f"`{v['type']}`", v['description'], ", ".join(['`' + val + '`' for val in v['values']])]
+        row = [f"`{k}`", f"`{v['type']}`", v['description'], ", ".join(['`' + val + '`' for val in v['values']]) if v.get("values") else ""]
 
         if v['required']:
             required.append(row)
