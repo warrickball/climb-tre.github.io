@@ -26,7 +26,7 @@
             "description": "Used to identify samples prepared in the same laboratory batch (e.g. extraction, library and/or sequencing).",
             "type": "text",
             "required": false,
-            "values": [
+            "restrictions": [
                 "Max length: 100"
             ]
         },
@@ -39,7 +39,7 @@
             "description": "Unique identifier for an individual to permit multiple samples from the same individual to be linked.",
             "type": "text",
             "required": false,
-            "values": [
+            "restrictions": [
                 "Max length: 100"
             ]
         },
@@ -78,17 +78,13 @@
             "description": "The date is approximate e.g. the sample is from a public repository and it is unclear whether the date corresponds to collection or publishing.",
             "type": "bool",
             "required": false,
-            "values": [
-                "Default: False"
-            ]
+            "default": false
         },
         "is_public_dataset": {
             "description": "The sample is from a public dataset.",
             "type": "bool",
             "required": false,
-            "values": [
-                "Default: False"
-            ]
+            "default": false
         },
         "library_protocol": {
             "description": "Details of sequencing library construction.",
@@ -187,7 +183,7 @@
             "description": "Used to identify sequencing centre.",
             "type": "text",
             "required": false,
-            "values": [
+            "restrictions": [
                 "Max length: 100"
             ]
         },
@@ -195,7 +191,7 @@
             "description": "Used to identify study or if NHS residual sample.",
             "type": "text",
             "required": false,
-            "values": [
+            "restrictions": [
                 "Max length: 100"
             ]
         }
