@@ -43,7 +43,7 @@ and which projects you have access to with
 ```
 (onyx) jovyan:~$ onyx projects
 ```
-You should see `mscapetest` listed.
+You should see `mscape` listed.
 
 ## Querying data
 
@@ -56,13 +56,13 @@ correctly recovers the DNA fractions. I.e. if our protocol is biased.
 From the command line, the main route to querying Onyx is via the `filter` command.
 On its own, this queries the database with *no* filters.  The command
 ```
-(onyx) jovyan:~$ onyx filter mscapetest
+(onyx) jovyan:~$ onyx filter mscape
 ```
 will produce tens of thousands of lines of JSON, so let's not
 do that just yet.  To first see which fields are available in the database,
 we can use
 ```
-(onyx) jovyan:~$ onyx fields mscapetest
+(onyx) jovyan:~$ onyx fields mscape
 ...
 ├────────────────────────────────┼──────────┼───────────────────┼──────────────────────────────────────────────────────────────────────────────┼─────────────────────────────────────────────────────────────────────────────┤
 │ extraction_enrichment_protocol │ optional │ text              │ Details of nucleic acid extraction and optional enrichment steps.            │                                                                             │
@@ -71,7 +71,7 @@ we can use
 ```
 Let's search the database for entries with `zymo` (case-insensitive) in this field.
 ```
-(onyx) jovyan:~$ onyx filter mscapetest --field extraction_enrichment_protocol.icontains=zymo
+(onyx) jovyan:~$ onyx filter mscape --field extraction_enrichment_protocol.icontains=zymo
 ...
 ```
 That should return JSON data for a few entries.  You may wish to format the
@@ -85,28 +85,27 @@ The complete reports can be found in the S3 buckets given in the
 `'taxon_report'` field.  You can find this in the output you've already produced
 or modify the `filter` command to only request them using the `--include` flag. e.g.
 ```
-(onyx) jovyan:~$ onyx filter mscapetest --field extraction_enrichment_protocol.icontains=zymo --include=taxon_reports
+(onyx) jovyan:~$ onyx filter mscape --field extraction_enrichment_protocol.icontains=zymo --include=taxon_reports
 [
     {
-        "taxon_reports": "s3://mscapetest-published-taxon-reports/C-FDE50853AD/"
+        "taxon_reports": "s3://mscape-published-taxon-reports/C-FDE50853AD/"
     },
     {
-        "taxon_reports": "s3://mscapetest-published-taxon-reports/C-04F4495068/"
+        "taxon_reports": "s3://mscape-published-taxon-reports/C-04F4495068/"
     }
 ]
 ```
-If you'd like multiple fields, enter each one with another `--include` flag,
-or use bash's [brace expansion](https://www.gnu.org/software/bash/manual/html_node/Brace-Expansion.html), e.g.
+Multiple fields can be requested with the `--include` flag e.g.
 ```
-(onyx) jovyan:~$ onyx filter mscapetest --field extraction_enrichment_protocol.icontains=zymo --include={cid,taxon_reports}
+(onyx) jovyan:~$ onyx filter mscape --field extraction_enrichment_protocol.icontains=zymo --include climb_id,taxon_reports
 [
     {
-        "cid": "C-FDE50853AD",
-        "taxon_reports": "s3://mscapetest-published-taxon-reports/C-FDE50853AD/"
+        "climb_id": "C-FDE50853AD",
+        "taxon_reports": "s3://mscape-published-taxon-reports/C-FDE50853AD/"
     },
     {
-        "cid": "C-04F4495068",
-        "taxon_reports": "s3://mscapetest-published-taxon-reports/C-04F4495068/"
+        "climb_id": "C-04F4495068",
+        "taxon_reports": "s3://mscape-published-taxon-reports/C-04F4495068/"
     }
 ]
 ```
@@ -116,15 +115,15 @@ flag in the same way.
 Either way, you now have the location of the taxonomy reports.  Let's have a look
 with `s3cmd`.
 ```
-(onyx) jovyan:~$ s3cmd ls s3://mscapetest-published-taxon-reports/C-FDE50853AD/
-2023-11-10 12:56   146K  s3://mscapetest-published-taxon-reports/C-FDE50853AD/PlusPF.kraken.json
-2023-11-10 12:56     2G  s3://mscapetest-published-taxon-reports/C-FDE50853AD/PlusPF.kraken_assignments.tsv
-2023-11-10 12:56   193K  s3://mscapetest-published-taxon-reports/C-FDE50853AD/PlusPF.kraken_report.txt
+(onyx) jovyan:~$ s3cmd ls s3://mscape-published-taxon-reports/C-FDE50853AD/
+2023-11-10 12:56   146K  s3://mscape-published-taxon-reports/C-FDE50853AD/PlusPF.kraken.json
+2023-11-10 12:56     2G  s3://mscape-published-taxon-reports/C-FDE50853AD/PlusPF.kraken_assignments.tsv
+2023-11-10 12:56   193K  s3://mscape-published-taxon-reports/C-FDE50853AD/PlusPF.kraken_report.txt
 ```
 The plain text report is what we're after, so let's download that with `s3cmd`:
 ```
-(onyx) jovyan:~$ s3cmd get s3://mscapetest-published-taxon-reports/C-FDE50853AD/PlusPF.kraken_report.txt
-download: 's3://mscapetest-published-taxon-reports/C-FDE50853AD/PlusPF.kraken_report.txt' -> './PlusPF.kraken_report.txt'  [1 of 1]
+(onyx) jovyan:~$ s3cmd get s3://mscape-published-taxon-reports/C-FDE50853AD/PlusPF.kraken_report.txt
+download: 's3://mscape-published-taxon-reports/C-FDE50853AD/PlusPF.kraken_report.txt' -> './PlusPF.kraken_report.txt'  [1 of 1]
  197750 of 197750   100% in    0s     3.79 MB/s  done
 ```
 
@@ -175,7 +174,7 @@ config = OnyxConfig(
 
 with OnyxClient(config) as client:
     records = list(client.filter(
-        "mscapetest",
+        "mscape",
         fields={
             "extraction_enrichment_protocol__icontains": "zymo",
         },
@@ -190,7 +189,7 @@ indentation, which can be done using the standard `json.dumps` function:
 import json
 print(json.dumps(records[0], indent=2))  # show first record
 ```
-In each record, the `'taxa'` key gives us a list of dictionaries
+In each record, the `'taxa_files'` key gives us a list of dictionaries
 that each has a number of reads and a mean length, the product of
 which is the total number of base pairs that were read for that
 taxon.  A simple first step is to convert the taxonomic data (for the first record)
@@ -198,7 +197,7 @@ into a Pandas DataFrame with
 ```py
 import pandas as pd
 
-df = pd.DataFrame(records[0]['taxa'])
+df = pd.DataFrame(records[0]['taxa_files'])
 ```
 We also need to drop a few lower-level taxa that are already
 accounted for in higher ones. e.g. the reads for *Bacillus spizizenii TU-B-10* are

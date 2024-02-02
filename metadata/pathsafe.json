@@ -6,7 +6,7 @@
             "type": "text",
             "required": false
         },
-        "cid": {
+        "climb_id": {
             "description": "Unique identifier for a project record. Set by Onyx.",
             "type": "text",
             "required": true

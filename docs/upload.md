@@ -51,9 +51,9 @@ $ bzcat DRR187559_2.fastqsanger.bz2 | gzip -c > DRR187559_2.fastq.gz
 ```
 
 The [mSCAPE specification](../mscape/) says that our files must have
-names like `mscape.[sample_id].[run_name].[extension]`, where the
+names like `mscape.[sample_id].[run_id].[extension]`, where the
 extension is `1.fastq.gz` or `2.fastq.gz`.  The `sample_id` and
-`run_name` can in principle contain any alphanumeric characters,
+`run_id` can in principle contain any alphanumeric characters,
 underscores (`_`) or hyphens ('-'), so you can rename the FASTQ files
 to whatever meets those requirements.
 At the command line, this means moving the files with something like:
@@ -81,15 +81,15 @@ The columns are documented in alphabetical order but can be given in
 any order.
 The optional columns can be omitted entirely.
 <!-- Is this true? -->
-Note that the `sample_id` and `run_name` must *exactly* match the values
+Note that the `sample_id` and `run_id` must *exactly* match the values
 implied by the FASTQ filenames.  E.g., in my example above
 
 * the `sample_id` is `test-sample-id-01` and
-* the `run_name` is `test-run-01`.
+* the `run_id` is `test-run-01`.
 
 The first few columns of your metadata CSV file might look like
 ```
-sample_id,run_name,sample_site,sample_type,...
+sample_id,run_id,sample_site,sample_type,...
 test-sample-id-01,test-run-01,other,other,...
 ```
 with no extra spaces separating the fields.

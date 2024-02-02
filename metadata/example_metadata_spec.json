@@ -29,7 +29,7 @@
             "required": false,
             "format": "YYYY-MM"
         },
-        "run_name": {
+        "run_id": {
             "description": "The unique identifier assigned to the run by the sequencing instrument.",
             "type": "hash",
             "required": true
@@ -51,7 +51,7 @@
             "required": false,
             "format": "decimal"
         },
-        "taxa": {
+        "taxa_files": {
             "avg_quality": {
                 "description": "",
                 "type": "numeric",
