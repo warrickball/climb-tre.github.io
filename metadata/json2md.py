@@ -17,7 +17,7 @@ with open(args.json_filename, 'r') as f:
 
 required = [
     ['Field name', 'Data type', 'Description', 'Restrictions'],
-    ['-----']*3,
+    ['-----']*4,
 ]
 optional = [row[:] for row in required]  # deep copy
 
