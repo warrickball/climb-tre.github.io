@@ -18,13 +18,13 @@ For *ONT* sequencing data, suppliers must provide
 The base filenames should be of the form
 
 ```
-mscape.[sample_id].[run_name].[extension]
+mscape.[sample_id].[run_id].[extension]
 ```
 
 where
 
 * `[sample_id]` is the sample identifier assigned by the provider,
-* `[run_name]` is the name of the sequencing run as given by the supplier's sequencing instrument (not an internal identifier assigned by the supplier),
+* `[run_id]` is the name of the sequencing run as given by the supplier's sequencing instrument (not an internal identifier assigned by the supplier),
 * `[extension]` is the file extension indicating the file type.
 
 ## File name extensions
@@ -42,7 +42,7 @@ For *ONT* sequencing data, the extensions (`[extension]`) should be
 
 ## Valid characters
 
-The `[sample_id]`, `[run_name]` and `[extension]` must contain only
+The `[sample_id]`, `[run_id]` and `[extension]` must contain only
 
 * letters (`A-Z`, `a-z`),
 * numbers (`0-9`),
