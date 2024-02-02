@@ -23,7 +23,16 @@ optional = [row[:] for row in required]  # deep copy
 
 for k, v in j['fields'].items():
     try:
-        row = [f"`{k}`", f"`{v['type']}`", v['description'], ", ".join(['`' + val + '`' for val in v['values']]) if v.get("values") else ""]
+        restrictions = []
+        if v.get("values"):
+            restrictions.append("* Choices: " + ", ".join(['`' + val + '`' for val in v['values']]))
+        if v.get("default") is not None:
+            restrictions.append(f"* Default: {v['default']}")
+        if v.get("restrictions"):
+            restrictions.extend(
+                f"* {restriction}" for restriction in v["restrictions"]
+            )
+        row = [f"`{k}`", f"`{v['type']}`", v['description'], "\n".join(restrictions)]
 
         if v['required']:
             required.append(row)
