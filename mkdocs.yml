@@ -24,16 +24,12 @@ theme:
         name: Switch to light mode
 
   features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    # - navigation.sections
+    # - navigation.top
+    - toc.integrate
     - content.code.copy
-
-markdown_extensions:
-  - pymdownx.highlight:
-      anchor_linenums: true
-      line_spans: __span
-      pygments_lang_class: true
-  - pymdownx.inlinehilite
-  - pymdownx.snippets
-  - pymdownx.superfences
 
 plugins:
   - search
@@ -52,12 +48,23 @@ plugins:
       show_anchors: true
       verbose: true
 
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - toc:
+      permalink: true
+
 nav:
   - Home: index.md
   - Getting started:
     - Uploading data: upload.md
     - Analysing data: analyse.md
-  - Project specs:
+  - Project specifications:
     - Common structure: common.md
     - PATH-SAFE: pathsafe.md
     - mSCAPE: mscape.md
