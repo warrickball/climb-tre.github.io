@@ -21,7 +21,7 @@ required = [
 ]
 optional = [row[:] for row in required]  # deep copy
 
-for k, v in j['data']['fields'].items():
+for k, v in j['fields'].items():
     try:
         row = [f"`{k}`", f"`{v['type']}`", v['description'], ", ".join(v['values'])]
 
