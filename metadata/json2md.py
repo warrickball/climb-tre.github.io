@@ -30,10 +30,10 @@ for k, v in j["fields"].items():
     if v.get("default") is not None:
         restrictions.append("• Default: " + f"`{v['default']}`")
     if v.get("restrictions"):
-        partitions = [restriction.partition(":") for restriction in v["restrictions"]]
+        partitions = [restriction.partition(": ") for restriction in v["restrictions"]]
         restrictions.extend(
             [
-                "• " + ":".join([condition, f"`{value}`"])
+                "• " + ": ".join([condition, f"`{value}`"])
                 for condition, _, value in partitions
             ]
         )
