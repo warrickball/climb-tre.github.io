@@ -28,7 +28,7 @@ theme:
     - navigation.tabs.sticky
     # - navigation.sections
     # - navigation.top
-    # - toc.integrate
+    - toc.integrate
     - content.code.copy
 
 plugins:
