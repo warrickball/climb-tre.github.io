@@ -1,133 +1,58 @@
 {
+    "name": "PATH-SAFE",
+    "description": "Pathogen Surveillance in Agriculture, Food and Environment Programme.",
     "version": "0.1.0",
     "fields": {
-        "assembly": {
-            "description": "",
+        "sample_id": {
+            "description": "The sequencing providers identifier for the sequenced sample.",
             "type": "text",
-            "required": false
-        },
-        "climb_id": {
-            "description": "Unique identifier for a project record. Set by Onyx.",
-            "type": "text",
-            "required": true
-        },
-        "country": {
-            "description": "Country that the sample was collected in.",
-            "type": "choice",
             "required": true,
-            "values": [
-                "England",
-                "Wales",
-                "Scotland",
-                "Northern Ireland"
+            "actions": [
+                "add"
             ]
-        },
-        "county": {
-            "description": "County the sample was collected in, taken from the ONS shapefile.",
-            "type": "choice",
-            "required": false,
-            "values": [
-                "Birmingham"
-            ]
-        },
-        "environmental_location": {
-            "description": "What type of location did the sample come from.",
-            "type": "text",
-            "required": false
-        },
-        "food_type": {
-            "description": "Type of food the sample was taken from.",
-            "type": "text",
-            "required": false
-        },
-        "host_species": {
-            "description": "NCBI Taxonomy ID for the host species.",
-            "type": "integer",
-            "required": false
-        },
-        "infection_status": {
-            "description": "Infection status of the host at the time of sampling.",
-            "type": "text",
-            "required": false
-        },
-        "pathogenwatch_uuid": {
-            "description": "",
-            "type": "text",
-            "required": false
-        },
-        "published_date": {
-            "description": "The date the project record was published. Set by Onyx.",
-            "type": "date (YYYY-MM-DD)",
-            "required": true
-        },
-        "purpose_of_sampling": {
-            "description": "The purpose of the sampling.",
-            "type": "text",
-            "required": true
-        },
-        "receipt_date": {
-            "description": "The date the sample was received by the sequencing provider.",
-            "type": "date (YYYY-MM-DD)",
-            "required": true
         },
         "run_name": {
             "description": "The unique identifier assigned to the run by the sequencing instrument.",
-            "type": "hash",
-            "required": true
-        },
-        "sample_date": {
-            "description": "The date the sample was taken by the sequencing provider.",
-            "type": "date (YYYY-MM-DD)",
-            "required": true
-        },
-        "sample_details": {
-            "description": "Details relevant to interpretation of the sample.",
             "type": "text",
-            "required": false
-        },
-        "sample_id": {
-            "description": "The sequencing providers identifier for the sequenced sample.",
-            "type": "hash",
-            "required": true
-        },
-        "sequence_host_org": {
-            "description": "",
-            "type": "choice",
             "required": true,
-            "values": [
-                "BIRM"
-            ]
-        },
-        "sequence_org": {
-            "description": "Laboratory within the organisation the sample has been sequenced by. Codes will be provided by CLIMB-TRE. This must match the sequence_org bucket files were submitted to.",
-            "type": "choice",
-            "required": true,
-            "values": [
-                "BIRM"
+            "actions": [
+                "add"
             ]
         },
         "site": {
             "description": "",
             "type": "choice",
             "required": true,
+            "actions": [
+                "add"
+            ],
             "values": [
                 "BIRM"
             ]
         },
-        "source_type": {
-            "description": "Source of the sample.",
-            "type": "choice",
+        "sample_date": {
+            "description": "The date the sample was taken by the sequencing provider.",
+            "type": "date (YYYY-MM-DD)",
             "required": true,
-            "values": [
-                "human",
-                "animal",
-                "environmental"
+            "actions": [
+                "add"
+            ]
+        },
+        "receipt_date": {
+            "description": "The date the sample was received by the sequencing provider.",
+            "type": "date (YYYY-MM-DD)",
+            "required": true,
+            "actions": [
+                "add"
             ]
         },
         "submit_org": {
             "description": "Organisation or agency the sample has been submitted by.",
             "type": "choice",
             "required": true,
+            "actions": [
+                "add"
+            ],
             "values": [
                 "UKHSA",
                 "APHA",
@@ -136,20 +61,113 @@
                 "PHS"
             ]
         },
+        "sequence_org": {
+            "description": "Laboratory within the organisation the sample has been sequenced by. Codes will be provided by CLIMB-TRE. This must match the sequence_org bucket files were submitted to.",
+            "type": "choice",
+            "required": true,
+            "actions": [
+                "add"
+            ],
+            "values": [
+                "BIRM"
+            ]
+        },
+        "sequence_host_org": {
+            "description": "",
+            "type": "choice",
+            "required": true,
+            "actions": [
+                "add"
+            ],
+            "values": [
+                "BIRM"
+            ]
+        },
+        "source_type": {
+            "description": "Source of the sample.",
+            "type": "choice",
+            "required": true,
+            "actions": [
+                "add"
+            ],
+            "values": [
+                "human",
+                "animal",
+                "environmental"
+            ]
+        },
+        "country": {
+            "description": "Country that the sample was collected in.",
+            "type": "choice",
+            "required": true,
+            "actions": [
+                "add"
+            ],
+            "values": [
+                "England",
+                "Wales",
+                "Scotland",
+                "Northern Ireland"
+            ]
+        },
+        "purpose_of_sampling": {
+            "description": "The purpose of the sampling.",
+            "type": "text",
+            "required": true,
+            "actions": [
+                "add"
+            ]
+        },
+        "county": {
+            "description": "County the sample was collected in, taken from the ONS shapefile.",
+            "type": "choice",
+            "required": false,
+            "actions": [
+                "add"
+            ],
+            "values": [
+                "Birmingham"
+            ]
+        },
+        "host_species": {
+            "description": "NCBI Taxonomy ID for the host species.",
+            "type": "integer",
+            "required": false,
+            "actions": [
+                "add"
+            ]
+        },
+        "infection_status": {
+            "description": "Infection status of the host at the time of sampling.",
+            "type": "text",
+            "required": false,
+            "actions": [
+                "add"
+            ]
+        },
         "travel_associated_dom": {
             "description": "Is this case associated with domestic travel?",
             "type": "bool",
-            "required": false
+            "required": false,
+            "actions": [
+                "add"
+            ]
         },
         "travel_associated_intl": {
             "description": "Is this case associated with international travel?",
             "type": "bool",
-            "required": false
+            "required": false,
+            "actions": [
+                "add"
+            ]
         },
         "travel_location_dom": {
             "description": "Location of domestic travel.",
             "type": "choice",
             "required": false,
+            "actions": [
+                "add"
+            ],
             "values": [
                 "Birmingham"
             ]
@@ -158,11 +176,54 @@
             "description": "Location of international travel.",
             "type": "choice",
             "required": false,
+            "actions": [
+                "add"
+            ],
             "values": [
                 "England",
                 "Wales",
                 "Scotland",
                 "Northern Ireland"
+            ]
+        },
+        "environmental_location": {
+            "description": "What type of location did the sample come from.",
+            "type": "text",
+            "required": false,
+            "actions": [
+                "add"
+            ]
+        },
+        "food_type": {
+            "description": "Type of food the sample was taken from.",
+            "type": "text",
+            "required": false,
+            "actions": [
+                "add"
+            ]
+        },
+        "sample_details": {
+            "description": "Details relevant to interpretation of the sample.",
+            "type": "text",
+            "required": false,
+            "actions": [
+                "add"
+            ]
+        },
+        "assembly": {
+            "description": "",
+            "type": "text",
+            "required": false,
+            "actions": [
+                "add"
+            ]
+        },
+        "pathogenwatch_uuid": {
+            "description": "",
+            "type": "text",
+            "required": false,
+            "actions": [
+                "add"
             ]
         }
     }
