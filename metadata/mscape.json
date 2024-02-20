@@ -3,65 +3,29 @@
     "description": "Metagenomics Surveillance, Collaboration and Analysis Programme.",
     "version": "0.1.0",
     "fields": {
-        "adm1_country": {
-            "description": "The country where the sample was collected.",
-            "type": "choice",
-            "required": false,
-            "values": [
-                "ENG",
-                "WALES",
-                "SCOT",
-                "NI"
+        "sample_id": {
+            "description": "The sequencing provider's identifier for the sequenced sample.",
+            "type": "text",
+            "required": true,
+            "actions": [
+                "add"
             ]
         },
-        "adm2_region": {
-            "description": "[NOT YET SUPPORTED] Upper Tier Local Authority name as per https://geoportal.statistics.gov.uk/datasets/ons::upper-tier-local-authorities-dec-2022-names-and-codes-in-the-united-kingdom",
-            "type": "choice",
-            "required": false,
-            "values": [
-                "OTHER"
+        "run_id": {
+            "description": "The unique identifier assigned to the run by the sequencing instrument.",
+            "type": "text",
+            "required": true,
+            "actions": [
+                "add"
             ]
-        },
-        "batch_id": {
-            "description": "Used to identify samples prepared in the same laboratory batch (e.g. extraction, library and/or sequencing).",
-            "type": "text",
-            "required": false,
-            "restrictions": [
-                "Max length: 100"
-            ]
-        },
-        "bioinformatics_protocol": {
-            "description": "Detail of initial bioinformatics protocol, for example versions of basecalling software and models used, any read quality filtering/trimming employed.",
-            "type": "text",
-            "required": false
-        },
-        "biosample_source_id": {
-            "description": "Unique identifier for an individual to permit multiple samples from the same individual to be linked.",
-            "type": "text",
-            "required": false,
-            "restrictions": [
-                "Max length: 100"
-            ]
-        },
-        "collection_date": {
-            "description": "The date the sample was collected.",
-            "type": "date (YYYY-MM)",
-            "required": false
-        },
-        "dehumanisation_protocol": {
-            "description": "Details of bioinformatics method used for human read removal.",
-            "type": "text",
-            "required": false
-        },
-        "extraction_enrichment_protocol": {
-            "description": "Details of nucleic acid extraction and optional enrichment steps.",
-            "type": "text",
-            "required": false
         },
         "input_type": {
             "description": "The type of input sequenced.",
             "type": "choice",
             "required": true,
+            "actions": [
+                "add"
+            ],
             "values": [
                 "positive_control",
                 "negative_control",
@@ -72,64 +36,18 @@
         "input_type_details": {
             "description": "Named control or standard, or respiratory_infection if sample.",
             "type": "choice",
-            "required": false
-        },
-        "is_approximate_date": {
-            "description": "The date is approximate e.g. the sample is from a public repository and it is unclear whether the date corresponds to collection or publishing.",
-            "type": "bool",
             "required": false,
-            "default": false
-        },
-        "is_public_dataset": {
-            "description": "The sample is from a public dataset.",
-            "type": "bool",
-            "required": false,
-            "default": false
-        },
-        "library_protocol": {
-            "description": "Details of sequencing library construction.",
-            "type": "text",
-            "required": false
-        },
-        "public_database_accession": {
-            "description": "The accession for the data in the public database.",
-            "type": "text",
-            "required": false
-        },
-        "public_database_name": {
-            "description": "The public repository where the data is.",
-            "type": "text",
-            "required": false
-        },
-        "received_date": {
-            "description": "The date the sample was received by the sequencing centre (if collection_date unavailable).",
-            "type": "date (YYYY-MM)",
-            "required": false
-        },
-        "run_id": {
-            "description": "The unique identifier assigned to the run by the sequencing instrument.",
-            "type": "text",
-            "required": true
-        },
-        "sample_id": {
-            "description": "The sequencing provider's identifier for the sequenced sample.",
-            "type": "text",
-            "required": true
-        },
-        "sample_latitude": {
-            "description": "North-south geographic coordinate of the sample (public data only).",
-            "type": "decimal",
-            "required": false
-        },
-        "sample_longitude": {
-            "description": "East-west geographic coordinate of the sample (public data only).",
-            "type": "decimal",
-            "required": false
+            "actions": [
+                "add"
+            ]
         },
         "sample_source": {
             "description": "The source from which the sample was collected.",
             "type": "choice",
             "required": true,
+            "actions": [
+                "add"
+            ],
             "values": [
                 "nose_and_throat",
                 "upper_respiratory",
@@ -148,6 +66,9 @@
             "description": "The type of sampling method used.",
             "type": "choice",
             "required": true,
+            "actions": [
+                "add"
+            ],
             "values": [
                 "swab",
                 "sputum",
@@ -157,42 +78,208 @@
                 "other"
             ]
         },
-        "sequence_purpose": {
-            "description": "Used to differentiate between clinical or research studies.",
-            "type": "choice",
+        "collection_date": {
+            "description": "The date the sample was collected.",
+            "type": "date (YYYY-MM)",
             "required": false,
-            "values": [
-                "clinical",
-                "research"
+            "actions": [
+                "add"
+            ],
+            "restrictions": [
+                "At least one required: collection_date, received_date"
             ]
         },
-        "sequencing_protocol": {
-            "description": "Details of sequencing.",
+        "received_date": {
+            "description": "The date the sample was received by the sequencing centre (if collection_date unavailable).",
+            "type": "date (YYYY-MM)",
+            "required": false,
+            "actions": [
+                "add"
+            ],
+            "restrictions": [
+                "At least one required: collection_date, received_date"
+            ]
+        },
+        "is_approximate_date": {
+            "description": "The date is approximate e.g. the sample is from a public repository and it is unclear whether the date corresponds to collection or publishing.",
+            "type": "bool",
+            "required": false,
+            "actions": [
+                "add"
+            ],
+            "default": false
+        },
+        "biosample_source_id": {
+            "description": "Unique identifier for an individual to permit multiple samples from the same individual to be linked.",
             "type": "text",
-            "required": false
+            "required": false,
+            "actions": [
+                "add"
+            ],
+            "restrictions": [
+                "Max length: 100"
+            ]
+        },
+        "batch_id": {
+            "description": "Used to identify samples prepared in the same laboratory batch (e.g. extraction, library and/or sequencing).",
+            "type": "text",
+            "required": false,
+            "actions": [
+                "add"
+            ],
+            "restrictions": [
+                "Max length: 100"
+            ]
         },
         "spike_in": {
             "description": "The type of spike-in used in the run.",
             "type": "choice",
             "required": false,
+            "actions": [
+                "add"
+            ],
             "values": [
                 "other"
-            ]
-        },
-        "study_centre_id": {
-            "description": "Used to identify sequencing centre.",
-            "type": "text",
-            "required": false,
-            "restrictions": [
-                "Max length: 100"
             ]
         },
         "study_id": {
             "description": "Used to identify study or if NHS residual sample.",
             "type": "text",
             "required": false,
+            "actions": [
+                "add"
+            ],
             "restrictions": [
                 "Max length: 100"
+            ]
+        },
+        "study_centre_id": {
+            "description": "Used to identify sequencing centre.",
+            "type": "text",
+            "required": false,
+            "actions": [
+                "add"
+            ],
+            "restrictions": [
+                "Max length: 100"
+            ]
+        },
+        "sequence_purpose": {
+            "description": "Used to differentiate between clinical or research studies.",
+            "type": "choice",
+            "required": false,
+            "actions": [
+                "add"
+            ],
+            "values": [
+                "clinical",
+                "research"
+            ]
+        },
+        "adm1_country": {
+            "description": "The country where the sample was collected.",
+            "type": "choice",
+            "required": false,
+            "actions": [
+                "add"
+            ],
+            "values": [
+                "ENG",
+                "WALES",
+                "SCOT",
+                "NI"
+            ]
+        },
+        "adm2_region": {
+            "description": "[NOT YET SUPPORTED] Upper Tier Local Authority name as per https://geoportal.statistics.gov.uk/datasets/ons::upper-tier-local-authorities-dec-2022-names-and-codes-in-the-united-kingdom",
+            "type": "choice",
+            "required": false,
+            "actions": [
+                "add"
+            ],
+            "values": [
+                "OTHER"
+            ]
+        },
+        "sample_latitude": {
+            "description": "North-south geographic coordinate of the sample (public data only).",
+            "type": "decimal",
+            "required": false,
+            "actions": [
+                "add"
+            ]
+        },
+        "sample_longitude": {
+            "description": "East-west geographic coordinate of the sample (public data only).",
+            "type": "decimal",
+            "required": false,
+            "actions": [
+                "add"
+            ]
+        },
+        "extraction_enrichment_protocol": {
+            "description": "Details of nucleic acid extraction and optional enrichment steps.",
+            "type": "text",
+            "required": false,
+            "actions": [
+                "add"
+            ]
+        },
+        "library_protocol": {
+            "description": "Details of sequencing library construction.",
+            "type": "text",
+            "required": false,
+            "actions": [
+                "add"
+            ]
+        },
+        "sequencing_protocol": {
+            "description": "Details of sequencing.",
+            "type": "text",
+            "required": false,
+            "actions": [
+                "add"
+            ]
+        },
+        "bioinformatics_protocol": {
+            "description": "Detail of initial bioinformatics protocol, for example versions of basecalling software and models used, any read quality filtering/trimming employed.",
+            "type": "text",
+            "required": false,
+            "actions": [
+                "add"
+            ]
+        },
+        "dehumanisation_protocol": {
+            "description": "Details of bioinformatics method used for human read removal.",
+            "type": "text",
+            "required": false,
+            "actions": [
+                "add"
+            ]
+        },
+        "is_public_dataset": {
+            "description": "The sample is from a public dataset.",
+            "type": "bool",
+            "required": false,
+            "actions": [
+                "add"
+            ],
+            "default": false
+        },
+        "public_database_name": {
+            "description": "The public repository where the data is.",
+            "type": "text",
+            "required": false,
+            "actions": [
+                "add"
+            ]
+        },
+        "public_database_accession": {
+            "description": "The accession for the data in the public database.",
+            "type": "text",
+            "required": false,
+            "actions": [
+                "add"
             ]
         }
     }
