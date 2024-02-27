@@ -19,17 +19,6 @@
                 "add"
             ]
         },
-        "site": {
-            "description": "",
-            "type": "choice",
-            "required": true,
-            "actions": [
-                "add"
-            ],
-            "values": [
-                "BIRM"
-            ]
-        },
         "sample_date": {
             "description": "The date the sample was taken by the sequencing provider.",
             "type": "date (YYYY-MM-DD)",
