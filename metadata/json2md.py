@@ -73,7 +73,7 @@ print("#" * args.depth + "# Required\n")
 print("".join(["| " + " | ".join(row) + " |\n" for row in required]))
 
 for x, table in at_least_one_required.items():
-    print("#" * args.depth + "### At least one of the following are required:\n")
+    print("At least one of the following fields are required:\n")
     print("".join(["| " + " | ".join(row) + " |\n" for row in table]))
 
 print("#" * args.depth + "# Optional\n")
