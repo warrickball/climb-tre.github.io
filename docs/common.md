@@ -56,7 +56,7 @@ can be left empty).
 
 Files should be uploaded in S3 buckets specific to the combination of
 
-* project (e.g. `pathsafe`),
+* project (e.g. `mscape`),
 * sequencing provider code (usually `sequencing_org` in the metadata),
 * platform (e.g. `illumina`) and
 * a flag to indicate a test (`test`) or production (`prod`) submission.

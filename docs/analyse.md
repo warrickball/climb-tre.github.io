@@ -14,20 +14,18 @@ so that once installed, the Onyx client will automatically be configured.
 ## Onyx client basics
 
 First, let's install the Onyx client, which is available through the
-[Python package](https://pypi.org/project/climb-onyx-client) 
+[conda-forge package](https://anaconda.org/conda-forge/climb-onyx-client) 
 `climb-onyx-client` and can thus be installed
-with `pip`.  As advised in the [CLIMB docs on installing
+with `conda`.  As advised in the [CLIMB docs on installing
 software](https://docs.climb.ac.uk/notebook-servers/installing-software-with-conda/),
 you should install the client in a new Conda environment.
-I'll name my environment `onyx` and install `ipykernel` too
-so that it's available in my Jupyter Notebooks.
+I'll name my environment `onyx` and install `climb-onyx-client`, as well as `ipykernel` (so that the client is available in my Jupyter Notebooks).
 ```
-jovyan:~$ conda create -n onyx ipykernel
+jovyan:~$ conda create -n onyx ipykernel climb-onyx-client
 ```
-Let's activate this environment and install the Onyx client.
+Let's activate this environment.
 ```
 jovyan:~$ conda activate onyx
-(onyx) jovyan:~$ pip install climb-onyx-client
 ```
 On Bryn's Notebook Servers, the client will automatically be configured.
 Try running the command-line client with
