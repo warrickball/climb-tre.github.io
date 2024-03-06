@@ -5,7 +5,7 @@
 This can be done through the CLI:
 
 ```
-$ onyx filter mscape --field taxa_files.human_readable.icontains=pseudomonas
+$ onyx filter mscape --field taxa_files.human_readable.icontains=pseudomonas --format csv
 ```
 
 Or through the Python API:
