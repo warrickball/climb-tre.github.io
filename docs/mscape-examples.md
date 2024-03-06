@@ -10,7 +10,7 @@ $ onyx filter mscape --field taxa_files.human_readable.icontains=pseudomonas
 
 Or through the Python API:
 
-```
+```python
 import os
 from onyx import OnyxConfig, OnyxClient, OnyxEnv, OnyxField
 
@@ -40,7 +40,35 @@ with OnyxClient(config) as client:
         print("Pseudomonas taxa:")
         for taxa in full_metadata["taxa_files"]:
             if "pseudomonas" in taxa["human_readable"].lower():
-                print(taxa["human_readable"])
+                print("-", taxa["human_readable"])
+```
+
+Example output for this python script:
+```
+CLIMB ID: C-FE89BACF2D
+Published date: 2024-02-28
+Number of binned reads: 3
+Pseudomonas taxa:
+- Pseudomonas aeruginosa
+- Pseudomonas aeruginosa PA7
+CLIMB ID: C-470A57DCD0
+Published date: 2024-02-28
+Number of binned reads: 8
+Pseudomonas taxa:
+- Pseudomonas aeruginosa
+- Pseudomonas aeruginosa PA7
+CLIMB ID: C-FB67513BE0
+Published date: 2024-02-28
+Number of binned reads: 4
+Pseudomonas taxa:
+- Pseudomonas aeruginosa
+CLIMB ID: C-E49EED98E4
+Published date: 2024-02-28
+Number of binned reads: 3
+Pseudomonas taxa:
+- Pseudomonas aeruginosa
+- Pseudomonas aeruginosa PA7
+...
 ```
 
 ## Get a CSV distribution of all binned taxa present in the dataset
@@ -53,7 +81,7 @@ $ onyx filter mscape --summarise taxa_files.taxon_id,taxa_files.human_readable -
 
 Or through the Python API:
 
-```
+```python
 import os
 from onyx import OnyxConfig, OnyxClient, OnyxEnv, OnyxField
 
@@ -71,4 +99,25 @@ with OnyxClient(config) as client:
         print("Taxon ID:", summary_data["taxa_files__taxon_id"])
         print("Taxon name:", summary_data["taxa_files__human_readable"])
         print("Number of readsets present:", summary_data["count"])
+```
+
+Example output for this python script:
+
+```
+Taxon ID: 1304
+Taxon name: Streptococcus salivarius
+Number of readsets present: 22
+Taxon ID: 1305
+Taxon name: Streptococcus sanguinis
+Number of readsets present: 9
+Taxon ID: 1313
+Taxon name: Streptococcus pneumoniae
+Number of readsets present: 26
+Taxon ID: 1318
+Taxon name: Streptococcus parasanguinis
+Number of readsets present: 42
+Taxon ID: 1328
+Taxon name: Streptococcus anginosus
+Number of readsets present: 4
+...
 ```
