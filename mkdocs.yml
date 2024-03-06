@@ -64,6 +64,8 @@ nav:
   - Getting started:
     - Uploading data: upload.md
     - Analysing data: analyse.md
+    - Further Examples:
+      - Analysis examples for mSCAPE: mscape-examples.md
   - Project specifications:
     - Common structure: common.md
     - PATH-SAFE: pathsafe.md
