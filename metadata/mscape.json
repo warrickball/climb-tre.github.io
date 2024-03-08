@@ -27,9 +27,9 @@
                 "add"
             ],
             "values": [
-                "positive_control",
-                "negative_control",
                 "community_standard",
+                "negative_control",
+                "positive_control",
                 "sample"
             ]
         },
@@ -49,17 +49,17 @@
                 "add"
             ],
             "values": [
-                "nose_and_throat",
-                "upper_respiratory",
-                "lower_respiratory",
-                "faecal",
-                "tissue",
-                "stool",
                 "blood",
-                "plasma",
-                "urine",
                 "environment",
-                "other"
+                "faecal",
+                "lower_respiratory",
+                "nose_and_throat",
+                "other",
+                "plasma",
+                "stool",
+                "tissue",
+                "upper_respiratory",
+                "urine"
             ]
         },
         "sample_type": {
@@ -70,12 +70,12 @@
                 "add"
             ],
             "values": [
-                "swab",
-                "sputum",
-                "bal",
                 "aspirate",
+                "bal",
                 "biopsy",
-                "other"
+                "other",
+                "sputum",
+                "swab"
             ]
         },
         "collection_date": {
@@ -185,9 +185,9 @@
             ],
             "values": [
                 "ENG",
-                "WALES",
+                "NI",
                 "SCOT",
-                "NI"
+                "WALES"
             ]
         },
         "adm2_region": {

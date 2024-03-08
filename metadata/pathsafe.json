@@ -43,11 +43,11 @@
                 "add"
             ],
             "values": [
-                "UKHSA",
                 "APHA",
-                "FSS",
                 "FSA",
-                "PHS"
+                "FSS",
+                "PHS",
+                "UKHSA"
             ]
         },
         "sequence_org": {
@@ -80,9 +80,9 @@
                 "add"
             ],
             "values": [
-                "human",
                 "animal",
-                "environmental"
+                "environmental",
+                "human"
             ]
         },
         "country": {
@@ -94,9 +94,9 @@
             ],
             "values": [
                 "England",
-                "Wales",
+                "Northern Ireland",
                 "Scotland",
-                "Northern Ireland"
+                "Wales"
             ]
         },
         "purpose_of_sampling": {
@@ -170,9 +170,9 @@
             ],
             "values": [
                 "England",
-                "Wales",
+                "Northern Ireland",
                 "Scotland",
-                "Northern Ireland"
+                "Wales"
             ]
         },
         "environmental_location": {
