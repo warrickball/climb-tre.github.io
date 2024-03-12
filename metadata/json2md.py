@@ -28,11 +28,6 @@ for k, v in j["fields"].items():
     restrictions = []
     at_least_one_required_keys = []
 
-    if v.get("values"):
-        restrictions.append(
-            "• Choices: " + ", ".join([f"`{val}`" for val in v["values"]])
-        )
-
     if v.get("default") is not None:
         restrictions.append("• Default: " + f"`{v['default']}`")
 
@@ -50,6 +45,11 @@ for k, v in j["fields"].items():
                 )
             else:
                 restrictions.append("• " + ": ".join([condition, f"`{value}`"]))
+
+    if v.get("values"):
+        restrictions.append(
+            "• Choices: " + ", ".join([f"`{val}`" for val in v["values"]])
+        )
 
     row = [f"`{k}`", f"`{v['type']}`", v["description"], "<br>".join(restrictions)]
 
