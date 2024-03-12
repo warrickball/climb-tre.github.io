@@ -51,7 +51,7 @@ for k, v in j["fields"].items():
             else:
                 restrictions.append("• " + ": ".join([condition, f"`{value}`"]))
 
-    row = [f"`{k}`", f"`{v['type']}`", v["description"], "\n".join(restrictions)]
+    row = [f"`{k}`", f"`{v['type']}`", v["description"], "<br>".join(restrictions)]
 
     if v["required"]:
         required.append(row)
