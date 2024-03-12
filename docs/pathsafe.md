@@ -8,10 +8,10 @@
 
 ## File name extensions
 
-The extensions (`[extension]`) should be
+The extensions (`[extension]`) should be:
 
-* `1.fastq.gz` for the forward FASTQ file,
-* `2.fastq.gz` for the reverse FASTQ file, and
+* `1.fastq.gz` for the forward FASTQ file.
+* `2.fastq.gz` for the reverse FASTQ file.
 * `csv` for the CSV metadata file.
 
 ## Metadata specification

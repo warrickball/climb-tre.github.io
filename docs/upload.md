@@ -51,15 +51,15 @@ $ bzcat DRR187559_2.fastqsanger.bz2 | gzip -c > DRR187559_2.fastq.gz
 ```
 
 The [mSCAPE specification](../mscape/) says that our files must have
-names like `mscape.[sample_id].[run_id].[extension]`, where the
-extension is `1.fastq.gz` or `2.fastq.gz`.  The `sample_id` and
+names like `mscape.[run_index].[run_id].[extension]`, where the
+extension is `1.fastq.gz` or `2.fastq.gz`.  The `run_index` and
 `run_id` can in principle contain any alphanumeric characters,
 underscores (`_`) or hyphens ('-'), so you can rename the FASTQ files
 to whatever meets those requirements.
 At the command line, this means moving the files with something like:
 ```
-$ mv DRR187559_1.fastq.gz mscape.test-sample-id-01.test-run-01.1.fastq.gz
-$ mv DRR187559_2.fastq.gz mscape.test-sample-id-01.test-run-01.2.fastq.gz
+$ mv DRR187559_1.fastq.gz mscape.test-run-index-01.test-run-id-01.1.fastq.gz
+$ mv DRR187559_2.fastq.gz mscape.test-run-index-01.test-run-id-01.2.fastq.gz
 ```
 
 ## Creating a metadata CSV file
@@ -81,16 +81,16 @@ The columns are documented in alphabetical order but can be given in
 any order.
 The optional columns can be omitted entirely.
 <!-- Is this true? -->
-Note that the `sample_id` and `run_id` must *exactly* match the values
+Note that the `run_index` and `run_id` must *exactly* match the values
 implied by the FASTQ filenames.  E.g., in my example above
 
-* the `sample_id` is `test-sample-id-01` and
-* the `run_id` is `test-run-01`.
+* the `run_index` is `test-run-index-01` and
+* the `run_id` is `test-run-id-01`.
 
 The first few columns of your metadata CSV file might look like
 ```
-sample_id,run_id,sample_source,sample_type,...
-test-sample-id-01,test-run-01,nose_and_throat,swab,...
+run_index,run_id,biosample_id,sample_source,sample_type,...
+test-run-index-01,test-run-id-01,test-sample-01,nose_and_throat,swab,...
 ```
 with no extra spaces separating the fields.
 
@@ -133,7 +133,7 @@ in the metadata specs but are usually of the form
 We'll use `mscape-public-illumina-test`, so the command to "put"
 the three files in the bucket would be
 ```
-$ s3cmd put mscape.test-sample-id-01.test-run-01.csv mscape.test-sample-id-01.test-run-01.1.fastq.gz mscape.test-sample-id-01.test-run-01.2.fastq.gz s3://mscape-public-illumina-test
+$ s3cmd put mscape.test-run-index-01.test-run-id-01.csv mscape.test-run-index-01.test-run-id-01.1.fastq.gz mscape.test-run-index-01.test-run-id-01.2.fastq.gz s3://mscape-public-illumina-test
 ```
 You should then see the progress of your upload (the files might be split into parts),
 after which you're back at the terminal.
