@@ -1,4 +1,4 @@
-# mSCAPE specifications
+# mSCAPE Uploader Specification
 
 ## Files to be provided
 

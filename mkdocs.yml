@@ -68,6 +68,9 @@ nav:
       - Analysis examples for mSCAPE: mscape-examples.md
   - Project specifications:
     - Common structure: common.md
-    - PATH-SAFE: pathsafe.md
-    - mSCAPE: mscape.md
+    - PATH-SAFE:
+      - Uploader specification: pathsafe.md
+    - mSCAPE: 
+      - Uploader specification: mscape.md
+      - Analysis specification: mscape-analysis.md
   - Onyx-client: https://CLIMB-TRE.github.io/onyx-client/

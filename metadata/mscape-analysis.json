@@ -1,0 +1,765 @@
+{
+    "name": "mSCAPE",
+    "description": "Metagenomics Surveillance, Collaboration and Analysis Programme.",
+    "version": "0.1.0",
+    "fields": {
+        "climb_id": {
+            "description": "Unique identifier for a project record in Onyx.",
+            "type": "text",
+            "required": true,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ],
+            "restrictions": [
+                "Max length: 12"
+            ]
+        },
+        "published_date": {
+            "description": "The date the project record was published in Onyx.",
+            "type": "date (YYYY-MM-DD)",
+            "required": true,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ]
+        },
+        "site": {
+            "description": "The site or sequencing centre providing the data.",
+            "type": "choice",
+            "required": true,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ],
+            "values": [
+                "bham",
+                "ukhsa",
+                "gstt",
+                "public"
+            ]
+        },
+        "biosample_id": {
+            "description": "The sequencing provider's identifier for a sample.",
+            "type": "text",
+            "required": true,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ],
+            "restrictions": [
+                "Max length: 50"
+            ]
+        },
+        "biosample_source_id": {
+            "description": "Unique identifier for an individual to permit multiple samples from the same individual to be linked.",
+            "type": "text",
+            "required": false,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ],
+            "restrictions": [
+                "Max length: 50"
+            ]
+        },
+        "run_id": {
+            "description": "Unique identifier assigned to the run by the sequencing instrument.",
+            "type": "text",
+            "required": true,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ],
+            "restrictions": [
+                "Max length: 50"
+            ]
+        },
+        "platform": {
+            "description": "The platform used to sequence the data.",
+            "type": "choice",
+            "required": true,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ],
+            "values": [
+                "illumina",
+                "ont"
+            ]
+        },
+        "input_type": {
+            "description": "The type of input sequenced.",
+            "type": "choice",
+            "required": true,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ],
+            "values": [
+                "positive_control",
+                "negative_control",
+                "community_standard",
+                "sample"
+            ]
+        },
+        "input_type_details": {
+            "description": "Named control or standard, or respiratory_infection if sample.",
+            "type": "choice",
+            "required": false,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ]
+        },
+        "sample_source": {
+            "description": "The source from which the sample was collected.",
+            "type": "choice",
+            "required": true,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ],
+            "values": [
+                "nose_and_throat",
+                "upper_respiratory",
+                "lower_respiratory",
+                "faecal",
+                "tissue",
+                "stool",
+                "blood",
+                "plasma",
+                "urine",
+                "environment",
+                "other"
+            ]
+        },
+        "sample_type": {
+            "description": "The type of sampling method used.",
+            "type": "choice",
+            "required": true,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ],
+            "values": [
+                "swab",
+                "sputum",
+                "bal",
+                "aspirate",
+                "biopsy",
+                "other"
+            ]
+        },
+        "collection_date": {
+            "description": "The date the sample was collected.",
+            "type": "date (YYYY-MM)",
+            "required": false,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ],
+            "restrictions": [
+                "At least one required: collection_date, received_date"
+            ]
+        },
+        "received_date": {
+            "description": "The date the sample was received by the sequencing centre (if collection_date unavailable).",
+            "type": "date (YYYY-MM)",
+            "required": false,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ],
+            "restrictions": [
+                "At least one required: collection_date, received_date"
+            ]
+        },
+        "is_approximate_date": {
+            "description": "The date is approximate e.g. the sample is from a public repository and it is unclear whether the date corresponds to collection or publishing.",
+            "type": "bool",
+            "required": false,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ],
+            "default": false
+        },
+        "batch_id": {
+            "description": "Used to identify samples prepared in the same laboratory batch (e.g. extraction, library and/or sequencing).",
+            "type": "text",
+            "required": false,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ],
+            "restrictions": [
+                "Max length: 100"
+            ]
+        },
+        "spike_in": {
+            "description": "The type of spike-in used in the run.",
+            "type": "choice",
+            "required": false,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ],
+            "values": [
+                "other"
+            ]
+        },
+        "study_id": {
+            "description": "Used to identify study or if NHS residual sample.",
+            "type": "text",
+            "required": false,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ],
+            "restrictions": [
+                "Max length: 100"
+            ]
+        },
+        "study_centre_id": {
+            "description": "Used to identify sequencing centre.",
+            "type": "text",
+            "required": false,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ],
+            "restrictions": [
+                "Max length: 100"
+            ]
+        },
+        "sequence_purpose": {
+            "description": "Used to differentiate between clinical or research studies.",
+            "type": "choice",
+            "required": false,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ],
+            "values": [
+                "clinical",
+                "research"
+            ]
+        },
+        "governance_status": {
+            "description": "Did the patient consent to their sample being used for research purposes or not.",
+            "type": "choice",
+            "required": false,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ],
+            "default": "no_consent_for_research",
+            "values": [
+                "consented_for_research",
+                "no_consent_for_research",
+                "open"
+            ]
+        },
+        "adm1_country": {
+            "description": "The country where the sample was collected.",
+            "type": "choice",
+            "required": false,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ],
+            "values": [
+                "ENG",
+                "WALES",
+                "SCOT",
+                "NI"
+            ]
+        },
+        "adm2_region": {
+            "description": "[NOT YET SUPPORTED] Upper Tier Local Authority name as per https://geoportal.statistics.gov.uk/datasets/ons::upper-tier-local-authorities-dec-2022-names-and-codes-in-the-united-kingdom",
+            "type": "choice",
+            "required": false,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ],
+            "values": [
+                "OTHER"
+            ],
+            "restrictions": [
+                "Requires: adm1_country"
+            ]
+        },
+        "sample_latitude": {
+            "description": "North-south geographic coordinate of the sample (public data only).",
+            "type": "decimal",
+            "required": false,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ]
+        },
+        "sample_longitude": {
+            "description": "East-west geographic coordinate of the sample (public data only).",
+            "type": "decimal",
+            "required": false,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ]
+        },
+        "extraction_enrichment_protocol": {
+            "description": "Details of nucleic acid extraction and optional enrichment steps.",
+            "type": "text",
+            "required": false,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ]
+        },
+        "library_protocol": {
+            "description": "Details of sequencing library construction.",
+            "type": "text",
+            "required": false,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ]
+        },
+        "sequencing_protocol": {
+            "description": "Details of sequencing.",
+            "type": "text",
+            "required": false,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ]
+        },
+        "bioinformatics_protocol": {
+            "description": "Detail of initial bioinformatics protocol, for example versions of basecalling software and models used, any read quality filtering/trimming employed.",
+            "type": "text",
+            "required": false,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ]
+        },
+        "dehumanisation_protocol": {
+            "description": "Details of bioinformatics method used for human read removal.",
+            "type": "text",
+            "required": false,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ]
+        },
+        "is_public_dataset": {
+            "description": "The sample is from a public dataset.",
+            "type": "bool",
+            "required": false,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ],
+            "default": false
+        },
+        "public_database_name": {
+            "description": "The public repository where the data is.",
+            "type": "text",
+            "required": false,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ]
+        },
+        "public_database_accession": {
+            "description": "The accession for the data in the public database.",
+            "type": "text",
+            "required": false,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ]
+        },
+        "ingest_report": {
+            "description": "HTML report summarising the read profile and taxa identified.",
+            "type": "text",
+            "required": true,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ]
+        },
+        "taxon_reports": {
+            "description": "Folder of all classification output files.",
+            "type": "text",
+            "required": true,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ]
+        },
+        "human_filtered_reads_1": {
+            "description": "Compressed FASTQ of input reads that have been filtered for human reads.",
+            "type": "text",
+            "required": true,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ]
+        },
+        "human_filtered_reads_2": {
+            "description": "Compressed FASTQ of input reads that have been filtered for human reads.",
+            "type": "text",
+            "required": false,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ]
+        },
+        "unclassified_reads_1": {
+            "description": "Compressed FASTQ of input reads which could not be classified.",
+            "type": "text",
+            "required": true,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ]
+        },
+        "unclassified_reads_2": {
+            "description": "Compressed FASTQ of input reads which could not be classified.",
+            "type": "text",
+            "required": false,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ]
+        },
+        "viral_reads_1": {
+            "description": "Compressed FASTQ of input reads which were classified as viral.",
+            "type": "text",
+            "required": true,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ]
+        },
+        "viral_reads_2": {
+            "description": "Compressed FASTQ of input reads which were classified as viral.",
+            "type": "text",
+            "required": false,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ]
+        },
+        "viral_and_unclassified_reads_1": {
+            "description": "Compressed FASTQ of input reads which were classified as viral or were unclassified.",
+            "type": "text",
+            "required": true,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ]
+        },
+        "viral_and_unclassified_reads_2": {
+            "description": "Compressed FASTQ of input reads which were classified as viral or were unclassified.",
+            "type": "text",
+            "required": false,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ]
+        },
+        "classifier": {
+            "description": "The classifier used.",
+            "type": "choice",
+            "required": true,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ],
+            "values": [
+                "Kraken2"
+            ]
+        },
+        "classifier_version": {
+            "description": "Version of the classifier used.",
+            "type": "text",
+            "required": true,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ]
+        },
+        "classifier_db": {
+            "description": "Database used for read classification.",
+            "type": "choice",
+            "required": true,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ],
+            "values": [
+                "PlusPF"
+            ]
+        },
+        "classifier_db_date": {
+            "description": "Date classifier database was produced.",
+            "type": "date (YYYY-MM-DD)",
+            "required": true,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ]
+        },
+        "ncbi_taxonomy_date": {
+            "description": "Date that the NCBI taxonomy dump was produced.",
+            "type": "date (YYYY-MM-DD)",
+            "required": true,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ]
+        },
+        "scylla_version": {
+            "description": "Version of the scylla pipeline used.",
+            "type": "text",
+            "required": true,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ]
+        },
+        "taxa_files": {
+            "description": "Table of all species level taxa extracted.",
+            "type": "relation",
+            "required": false,
+            "actions": [
+                "get",
+                "filter"
+            ],
+            "fields": {
+                "taxon_id": {
+                    "description": "The NCBI taxonomy id associated with the taxa.",
+                    "type": "integer",
+                    "required": true,
+                    "actions": [
+                        "get",
+                        "filter"
+                    ]
+                },
+                "human_readable": {
+                    "description": "A human readable name for the taxa.",
+                    "type": "text",
+                    "required": true,
+                    "actions": [
+                        "get",
+                        "filter"
+                    ]
+                },
+                "n_reads": {
+                    "description": "The number of reads extracted for the taxa.",
+                    "type": "integer",
+                    "required": true,
+                    "actions": [
+                        "get",
+                        "filter"
+                    ]
+                },
+                "avg_quality": {
+                    "description": "The mean quality of reads extracted for the taxa.",
+                    "type": "decimal",
+                    "required": true,
+                    "actions": [
+                        "get",
+                        "filter"
+                    ]
+                },
+                "mean_len": {
+                    "description": "The mean length of reads extracted for the taxa.",
+                    "type": "decimal",
+                    "required": true,
+                    "actions": [
+                        "get",
+                        "filter"
+                    ]
+                },
+                "rank": {
+                    "description": "The rank of the taxa.",
+                    "type": "choice",
+                    "required": true,
+                    "actions": [
+                        "get",
+                        "filter"
+                    ],
+                    "values": [
+                        "U",
+                        "R",
+                        "D",
+                        "K",
+                        "P",
+                        "C",
+                        "O",
+                        "F",
+                        "G",
+                        "S"
+                    ]
+                },
+                "fastq_1": {
+                    "description": "Compressed FASTQ of extracted reads for the taxa.",
+                    "type": "text",
+                    "required": true,
+                    "actions": [
+                        "get",
+                        "filter"
+                    ]
+                },
+                "fastq_2": {
+                    "description": "Compressed FASTQ of extracted reads for the taxa.",
+                    "type": "text",
+                    "required": false,
+                    "actions": [
+                        "get",
+                        "filter"
+                    ]
+                }
+            }
+        },
+        "classifier_calls": {
+            "description": "Table summarising the NCBI taxonomy ids, counts and ranks of all taxa found by the classifier.",
+            "type": "relation",
+            "required": false,
+            "actions": [
+                "get",
+                "filter"
+            ],
+            "fields": {
+                "taxon_id": {
+                    "description": "The NCBI taxonomy id associated with the taxa.",
+                    "type": "integer",
+                    "required": true,
+                    "actions": [
+                        "get",
+                        "filter"
+                    ]
+                },
+                "human_readable": {
+                    "description": "A human readable name for the taxa.",
+                    "type": "text",
+                    "required": true,
+                    "actions": [
+                        "get",
+                        "filter"
+                    ]
+                },
+                "percentage": {
+                    "description": "The percentage of the (dehumanised) sample that the taxa represents.",
+                    "type": "decimal",
+                    "required": true,
+                    "actions": [
+                        "get",
+                        "filter"
+                    ]
+                },
+                "count_descendants": {
+                    "description": "The number of reads mapping to this taxa and all descendant taxa.",
+                    "type": "integer",
+                    "required": true,
+                    "actions": [
+                        "get",
+                        "filter"
+                    ]
+                },
+                "count_direct": {
+                    "description": "The number of reads mapping directly to the taxa.",
+                    "type": "integer",
+                    "required": true,
+                    "actions": [
+                        "get",
+                        "filter"
+                    ]
+                },
+                "rank": {
+                    "description": "The rank of the taxa.",
+                    "type": "choice",
+                    "required": true,
+                    "actions": [
+                        "get",
+                        "filter"
+                    ],
+                    "values": [
+                        "U",
+                        "R",
+                        "D",
+                        "K",
+                        "P",
+                        "C",
+                        "O",
+                        "F",
+                        "G",
+                        "S"
+                    ]
+                },
+                "raw_rank": {
+                    "description": "The rank of the taxa including an intermediate grading.",
+                    "type": "text",
+                    "required": true,
+                    "actions": [
+                        "get",
+                        "filter"
+                    ]
+                }
+            }
+        }
+    }
+}

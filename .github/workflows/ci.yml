@@ -22,6 +22,7 @@ jobs:
             mkdocs-material-
       - run: |
           python3 metadata/json2md.py metadata/mscape.json -d 2 >> docs/mscape.md
+          python3 metadata/json2md.py metadata/mscape-analysis.json -d 2 >> docs/mscape-analysis.md
           python3 metadata/json2md.py metadata/pathsafe.json -d 2 >> docs/pathsafe.md
           wget https://raw.githubusercontent.com/CLIMB-TRE/onyx-client/master/README.md -O docs/onyx_client_installation_guide.md
           # pip install 'onyx @ git+https://github.com/CLIMB-TRE/onyx-client@0b791a8237e0418aa42a2e0f98bac587d7afb95a'

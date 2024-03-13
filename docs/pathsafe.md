@@ -1,4 +1,4 @@
-# PATH-SAFE specifications
+# PATH-SAFE Uploader Specification
 
 ## Files to be provided
 
