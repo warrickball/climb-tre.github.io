@@ -3,20 +3,48 @@
     "description": "Metagenomics Surveillance, Collaboration and Analysis Programme.",
     "version": "0.1.0",
     "fields": {
-        "sample_id": {
-            "description": "The sequencing provider's identifier for the sequenced sample.",
+        "biosample_id": {
+            "description": "The sequencing provider's identifier for a sample.",
             "type": "text",
             "required": true,
             "actions": [
                 "add"
+            ],
+            "restrictions": [
+                "Max length: 50"
+            ]
+        },
+        "biosample_source_id": {
+            "description": "Unique identifier for an individual to permit multiple samples from the same individual to be linked.",
+            "type": "text",
+            "required": false,
+            "actions": [
+                "add"
+            ],
+            "restrictions": [
+                "Max length: 50"
+            ]
+        },
+        "run_index": {
+            "description": "The sequencing provider's identifier for the position of a sample on a run.",
+            "type": "text",
+            "required": true,
+            "actions": [
+                "add"
+            ],
+            "restrictions": [
+                "Max length: 50"
             ]
         },
         "run_id": {
-            "description": "The unique identifier assigned to the run by the sequencing instrument.",
+            "description": "Unique identifier assigned to the run by the sequencing instrument.",
             "type": "text",
             "required": true,
             "actions": [
                 "add"
+            ],
+            "restrictions": [
+                "Max length: 50"
             ]
         },
         "input_type": {
@@ -109,17 +137,6 @@
             ],
             "default": false
         },
-        "biosample_source_id": {
-            "description": "Unique identifier for an individual to permit multiple samples from the same individual to be linked.",
-            "type": "text",
-            "required": false,
-            "actions": [
-                "add"
-            ],
-            "restrictions": [
-                "Max length: 100"
-            ]
-        },
         "batch_id": {
             "description": "Used to identify samples prepared in the same laboratory batch (e.g. extraction, library and/or sequencing).",
             "type": "text",
@@ -176,6 +193,20 @@
                 "research"
             ]
         },
+        "governance_status": {
+            "description": "Did the patient consent to their sample being used for research purposes or not.",
+            "type": "choice",
+            "required": false,
+            "actions": [
+                "add"
+            ],
+            "default": "no_consent_for_research",
+            "values": [
+                "consented_for_research",
+                "no_consent_for_research",
+                "open"
+            ]
+        },
         "adm1_country": {
             "description": "The country where the sample was collected.",
             "type": "choice",
@@ -199,6 +230,9 @@
             ],
             "values": [
                 "OTHER"
+            ],
+            "restrictions": [
+                "Requires: adm1_country"
             ]
         },
         "sample_latitude": {
