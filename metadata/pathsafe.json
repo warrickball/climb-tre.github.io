@@ -3,40 +3,116 @@
     "description": "Pathogen Surveillance in Agriculture, Food and Environment Programme.",
     "version": "0.1.0",
     "fields": {
-        "sample_id": {
-            "description": "The sequencing providers identifier for the sequenced sample.",
+        "biosample_id": {
+            "description": "The sequencing providers identifier for a sample.",
             "type": "text",
             "required": true,
             "actions": [
                 "add"
+            ],
+            "restrictions": [
+                "Max length: 50"
             ]
         },
-        "run_name": {
+        "run_index": {
+            "description": "The sequencing provider's identifier for the position of a sample on a run.",
+            "type": "text",
+            "required": true,
+            "actions": [
+                "add"
+            ],
+            "restrictions": [
+                "Max length: 50"
+            ]
+        },
+        "run_id": {
             "description": "The unique identifier assigned to the run by the sequencing instrument.",
             "type": "text",
             "required": true,
             "actions": [
                 "add"
+            ],
+            "restrictions": [
+                "Max length: 50"
             ]
         },
-        "sample_date": {
-            "description": "The date the sample was taken by the sequencing provider.",
-            "type": "date (YYYY-MM-DD)",
-            "required": true,
+        "sample_accession": {
+            "description": "Sample accession number if sequence is publically available in SRA.",
+            "type": "text",
+            "required": false,
+            "actions": [
+                "add"
+            ]
+        },
+        "enterobase_barcode": {
+            "description": "Sample barcode if sequence is publically available in EnteroBase.",
+            "type": "text",
+            "required": false,
+            "actions": [
+                "add"
+            ]
+        },
+        "collection_date": {
+            "description": "Date of sample collection.",
+            "type": "date (YYYY-MM)",
+            "required": false,
             "actions": [
                 "add"
             ]
         },
         "receipt_date": {
-            "description": "The date the sample was received by the sequencing provider.",
-            "type": "date (YYYY-MM-DD)",
+            "description": "Date of receipt of the sample.",
+            "type": "date (YYYY-MM)",
+            "required": false,
+            "actions": [
+                "add"
+            ]
+        },
+        "month": {
+            "description": "Month of sample collected if available or month of receipt otherwise.",
+            "type": "integer",
+            "required": false,
+            "actions": [
+                "add"
+            ]
+        },
+        "year": {
+            "description": "Year of sample collected if available or year of sample receipt otherwise.",
+            "type": "integer",
             "required": true,
             "actions": [
                 "add"
             ]
         },
-        "submit_org": {
-            "description": "Organisation or agency the sample has been submitted by.",
+        "sequence_org": {
+            "description": "Laboratory, organisation or agency the sample has been sequenced by.",
+            "type": "choice",
+            "required": false,
+            "actions": [
+                "add"
+            ],
+            "values": [
+                "UKHSA",
+                "SSSCDRL",
+                "APHA",
+                "FSS",
+                "FSA",
+                "PHS"
+            ]
+        },
+        "sequence_org_other": {
+            "description": "Additional laboratory, organisation or agency the sample has been sequenced by.",
+            "type": "text",
+            "required": false,
+            "actions": [
+                "add"
+            ],
+            "restrictions": [
+                "Requires: sequence_org"
+            ]
+        },
+        "data_steward": {
+            "description": "Laboratory, organisation or agency that hold the data for the sample.",
             "type": "choice",
             "required": true,
             "actions": [
@@ -44,32 +120,24 @@
             ],
             "values": [
                 "UKHSA",
+                "SSSCDRL",
                 "APHA",
                 "FSS",
                 "FSA",
-                "PHS"
+                "PHS",
+                "PHW",
+                "OTHER"
             ]
         },
-        "sequence_org": {
-            "description": "Laboratory within the organisation the sample has been sequenced by. Codes will be provided by CLIMB-TRE. This must match the sequence_org bucket files were submitted to.",
-            "type": "choice",
-            "required": true,
+        "data_steward_other": {
+            "description": "Additional laboratory, organisation or agency that hold the data for the sample.",
+            "type": "text",
+            "required": false,
             "actions": [
                 "add"
             ],
-            "values": [
-                "BIRM"
-            ]
-        },
-        "sequence_host_org": {
-            "description": "",
-            "type": "choice",
-            "required": true,
-            "actions": [
-                "add"
-            ],
-            "values": [
-                "BIRM"
+            "restrictions": [
+                "Required when data_steward is: OTHER"
             ]
         },
         "source_type": {
@@ -82,134 +150,317 @@
             "values": [
                 "human",
                 "animal",
-                "environmental"
+                "food",
+                "environment",
+                "human_associated_environment",
+                "animal_associated_environment",
+                "food_associated_environment",
+                "other_environment",
+                "other",
+                "missing",
+                "not_applicable",
+                "not_collected",
+                "not_provided",
+                "restricted_access"
             ]
         },
         "country": {
-            "description": "Country that the sample was collected in.",
+            "description": "The country that the sample was collected in, using ISO-3166-1 alpha-2 codes (https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), unless within United Kingdom. If so, use ISO-3166-2:GB (https://en.wikipedia.org/wiki/ISO_3166-2:GB).",
             "type": "choice",
             "required": true,
             "actions": [
                 "add"
             ],
             "values": [
-                "England",
-                "Wales",
-                "Scotland",
-                "Northern Ireland"
-            ]
-        },
-        "purpose_of_sampling": {
-            "description": "The purpose of the sampling.",
-            "type": "text",
-            "required": true,
-            "actions": [
-                "add"
+                "GB",
+                "GB-ENG",
+                "GB-NIR",
+                "GB-SCT",
+                "GB-WLS"
             ]
         },
         "county": {
-            "description": "County the sample was collected in, taken from the ONS shapefile.",
+            "description": "County that the sample was collected in, using the second level subdivision codes of ISO-3166-2:GB (https://www.iso.org/obp/ui/#iso:code:3166:GB).",
             "type": "choice",
             "required": false,
             "actions": [
                 "add"
             ],
             "values": [
-                "Birmingham"
+                "GB-ABC",
+                "GB-ABD",
+                "GB-ABE",
+                "GB-AGB",
+                "GB-AGY",
+                "GB-AND",
+                "GB-ANN",
+                "GB-ANS",
+                "GB-BAS",
+                "GB-BBD",
+                "GB-BCP",
+                "GB-BDF",
+                "GB-BDG",
+                "GB-BEN",
+                "GB-BEX",
+                "GB-BFS",
+                "GB-BGE",
+                "GB-BGW",
+                "GB-BIR",
+                "GB-BKM",
+                "GB-BNE",
+                "GB-BNH",
+                "GB-BNS",
+                "GB-BOL",
+                "GB-BPL",
+                "GB-BRC",
+                "GB-BRD",
+                "GB-BRY",
+                "GB-BST",
+                "GB-BUR",
+                "GB-CAM",
+                "GB-CAY",
+                "GB-CBF",
+                "GB-CCG",
+                "GB-CGN",
+                "GB-CHE",
+                "GB-CHW",
+                "GB-CLD",
+                "GB-CLK",
+                "GB-CMA",
+                "GB-CMD",
+                "GB-CMN",
+                "GB-CON",
+                "GB-COV",
+                "GB-CRF",
+                "GB-CRY",
+                "GB-CWY",
+                "GB-DAL",
+                "GB-DBY",
+                "GB-DEN",
+                "GB-DER",
+                "GB-DEV",
+                "GB-DGY",
+                "GB-DNC",
+                "GB-DND",
+                "GB-DOR",
+                "GB-DRS",
+                "GB-DUD",
+                "GB-DUR",
+                "GB-EAL",
+                "GB-EAY",
+                "GB-EDH",
+                "GB-EDU",
+                "GB-ELN",
+                "GB-ELS",
+                "GB-ENF",
+                "GB-ERW",
+                "GB-ERY",
+                "GB-ESS",
+                "GB-ESX",
+                "GB-FAL",
+                "GB-FIF",
+                "GB-FLN",
+                "GB-FMO",
+                "GB-GAT",
+                "GB-GLG",
+                "GB-GLS",
+                "GB-GRE",
+                "GB-GWN",
+                "GB-HAL",
+                "GB-HAM",
+                "GB-HAV",
+                "GB-HCK",
+                "GB-HEF",
+                "GB-HIL",
+                "GB-HLD",
+                "GB-HMF",
+                "GB-HNS",
+                "GB-HPL",
+                "GB-HRT",
+                "GB-HRW",
+                "GB-HRY",
+                "GB-IOS",
+                "GB-IOW",
+                "GB-ISL",
+                "GB-IVC",
+                "GB-KEC",
+                "GB-KEN",
+                "GB-KHL",
+                "GB-KIR",
+                "GB-KTT",
+                "GB-KWL",
+                "GB-LAN",
+                "GB-LBC",
+                "GB-LBH",
+                "GB-LCE",
+                "GB-LDS",
+                "GB-LEC",
+                "GB-LEW",
+                "GB-LIN",
+                "GB-LIV",
+                "GB-LND",
+                "GB-LUT",
+                "GB-MAN",
+                "GB-MDB",
+                "GB-MDW",
+                "GB-MEA",
+                "GB-MIK",
+                "GB-MLN",
+                "GB-MON",
+                "GB-MRT",
+                "GB-MRY",
+                "GB-MTY",
+                "GB-MUL",
+                "GB-NAY",
+                "GB-NBL",
+                "GB-NEL",
+                "GB-NET",
+                "GB-NFK",
+                "GB-NGM",
+                "GB-NLK",
+                "GB-NLN",
+                "GB-NMD",
+                "GB-NNH",
+                "GB-NSM",
+                "GB-NTL",
+                "GB-NTT",
+                "GB-NTY",
+                "GB-NWM",
+                "GB-NWP",
+                "GB-NYK",
+                "GB-OLD",
+                "GB-ORK",
+                "GB-OXF",
+                "GB-PEM",
+                "GB-PKN",
+                "GB-PLY",
+                "GB-POR",
+                "GB-POW",
+                "GB-PTE",
+                "GB-RCC",
+                "GB-RCH",
+                "GB-RCT",
+                "GB-RDB",
+                "GB-RDG",
+                "GB-RFW",
+                "GB-RIC",
+                "GB-ROT",
+                "GB-RUT",
+                "GB-SAW",
+                "GB-SAY",
+                "GB-SCB",
+                "GB-SFK",
+                "GB-SFT",
+                "GB-SGC",
+                "GB-SHF",
+                "GB-SHN",
+                "GB-SHR",
+                "GB-SKP",
+                "GB-SLF",
+                "GB-SLG",
+                "GB-SLK",
+                "GB-SND",
+                "GB-SOL",
+                "GB-SOM",
+                "GB-SOS",
+                "GB-SRY",
+                "GB-STE",
+                "GB-STG",
+                "GB-STH",
+                "GB-STN",
+                "GB-STS",
+                "GB-STT",
+                "GB-STY",
+                "GB-SWA",
+                "GB-SWD",
+                "GB-SWK",
+                "GB-TAM",
+                "GB-TFW",
+                "GB-THR",
+                "GB-TOB",
+                "GB-TOF",
+                "GB-TRF",
+                "GB-TWH",
+                "GB-VGL",
+                "GB-WAR",
+                "GB-WBK",
+                "GB-WDU",
+                "GB-WFT",
+                "GB-WGN",
+                "GB-WIL",
+                "GB-WKF",
+                "GB-WLL",
+                "GB-WLN",
+                "GB-WLV",
+                "GB-WND",
+                "GB-WNH",
+                "GB-WNM",
+                "GB-WOK",
+                "GB-WOR",
+                "GB-WRL",
+                "GB-WRT",
+                "GB-WRX",
+                "GB-WSM",
+                "GB-WSX",
+                "GB-YOR",
+                "GB-ZET"
+            ],
+            "restrictions": [
+                "Requires: country"
             ]
         },
-        "host_species": {
-            "description": "NCBI Taxonomy ID for the host species.",
-            "type": "integer",
+        "sample_purpose": {
+            "description": "The purpose of the sample collection.",
+            "type": "choice",
+            "required": true,
+            "actions": [
+                "add"
+            ],
+            "values": [
+                "routine_surveillance",
+                "routine_diagnostics",
+                "outbreak_initiated_surveillance",
+                "outbreak_investigation",
+                "population_based_surveillance",
+                "active_surveillance",
+                "research",
+                "not_applicable",
+                "not_collected",
+                "not_provided",
+                "restricted_access",
+                "other"
+            ]
+        },
+        "sample_purpose_other": {
+            "description": "Additional purpose of the sample collection.",
+            "type": "text",
             "required": false,
             "actions": [
                 "add"
+            ],
+            "restrictions": [
+                "Required when sample_purpose is: other"
             ]
         },
-        "infection_status": {
-            "description": "Infection status of the host at the time of sampling.",
+        "sequencing_kit": {
+            "description": "The sequencing kit used.",
             "type": "text",
             "required": false,
             "actions": [
                 "add"
             ]
         },
-        "travel_associated_dom": {
-            "description": "Is this case associated with domestic travel?",
+        "library_kit": {
+            "description": "The library kit used to prep the sample.",
+            "type": "text",
+            "required": false,
+            "actions": [
+                "add"
+            ]
+        },
+        "is_multiplexed": {
+            "description": "Whether the sample was multiplexed.",
             "type": "bool",
-            "required": false,
-            "actions": [
-                "add"
-            ]
-        },
-        "travel_associated_intl": {
-            "description": "Is this case associated with international travel?",
-            "type": "bool",
-            "required": false,
-            "actions": [
-                "add"
-            ]
-        },
-        "travel_location_dom": {
-            "description": "Location of domestic travel.",
-            "type": "choice",
-            "required": false,
-            "actions": [
-                "add"
-            ],
-            "values": [
-                "Birmingham"
-            ]
-        },
-        "travel_location_intl": {
-            "description": "Location of international travel.",
-            "type": "choice",
-            "required": false,
-            "actions": [
-                "add"
-            ],
-            "values": [
-                "England",
-                "Wales",
-                "Scotland",
-                "Northern Ireland"
-            ]
-        },
-        "environmental_location": {
-            "description": "What type of location did the sample come from.",
-            "type": "text",
-            "required": false,
-            "actions": [
-                "add"
-            ]
-        },
-        "food_type": {
-            "description": "Type of food the sample was taken from.",
-            "type": "text",
-            "required": false,
-            "actions": [
-                "add"
-            ]
-        },
-        "sample_details": {
-            "description": "Details relevant to interpretation of the sample.",
-            "type": "text",
-            "required": false,
-            "actions": [
-                "add"
-            ]
-        },
-        "assembly": {
-            "description": "",
-            "type": "text",
-            "required": false,
-            "actions": [
-                "add"
-            ]
-        },
-        "pathogenwatch_uuid": {
-            "description": "",
-            "type": "text",
             "required": false,
             "actions": [
                 "add"
