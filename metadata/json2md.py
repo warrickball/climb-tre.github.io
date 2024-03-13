@@ -91,14 +91,6 @@ def analysis_spec(fields, spec, prefix=""):
     for k, v in fields.items():
         restrictions = []
 
-        if v.get("default") is not None:
-            restrictions.append("• Default: " + f"`{v['default']}`")
-
-        if v.get("restrictions"):
-            for restriction in v["restrictions"]:
-                condition, _, value = restriction.partition(": ")
-                restrictions.append("• " + ": ".join([condition, f"`{value}`"]))
-
         if v.get("values"):
             restrictions.append(
                 "• Choices: " + ", ".join([f"`{val}`" for val in v["values"]])
@@ -126,7 +118,12 @@ if args.title:
 
 if not args.analysis:
     required = [
-        ["Field name", "Data type", "Description", "Restrictions"],
+        [
+            "Field name" + "&nbsp;" * 10,
+            "Data type",
+            "Description",
+            "Restrictions",
+        ],
         ["-----"] * 4,
     ]
     optional = copy.deepcopy(required)
@@ -152,7 +149,12 @@ if not args.analysis:
     print("".join(["| " + " | ".join(row) + " |\n" for row in optional]))
 else:
     spec = [
-        ["Field name", "Data type", "Description", "Restrictions"],
+        [
+            "Field name" + "&nbsp;" * 10,
+            "Data type",
+            "Description",
+            "Restrictions",
+        ],
         ["-----"] * 4,
     ]
     analysis_spec(j["fields"], spec)
