@@ -119,7 +119,7 @@ if args.title:
 if not args.analysis:
     required = [
         [
-            "Field name" + "&nbsp;" * 10,
+            "Field name" + "&nbsp;" * 40,
             "Data type",
             "Description",
             "Restrictions",
@@ -150,7 +150,7 @@ if not args.analysis:
 else:
     spec = [
         [
-            "Field name" + "&nbsp;" * 10,
+            "Field name" + "&nbsp;" * 40,
             "Data type",
             "Description",
             "Restrictions",
