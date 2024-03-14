@@ -14,6 +14,17 @@
                 "Max length: 50"
             ]
         },
+        "biosample_source_id": {
+            "description": "Unique identifier for an individual to permit multiple samples from the same individual to be linked.",
+            "type": "text",
+            "required": false,
+            "actions": [
+                "add"
+            ],
+            "restrictions": [
+                "Max length: 50"
+            ]
+        },
         "run_index": {
             "description": "The sequencing provider's identifier for the position of a sample on a run.",
             "type": "text",
