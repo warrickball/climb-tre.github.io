@@ -70,6 +70,7 @@ nav:
     - Common structure: common.md
     - PATH-SAFE:
       - Uploader specification: pathsafe.md
+      - Analysis specification: pathsafe-analysis.md
     - mSCAPE: 
       - Uploader specification: mscape.md
       - Analysis specification: mscape-analysis.md
