@@ -5,12 +5,17 @@ import copy
 from argparse import ArgumentParser
 
 parser = ArgumentParser()
-parser.add_argument("json_filename", type=str)
+command = parser.add_subparsers(dest="command", metavar="{command}", required=True)
 parser.add_argument("-t", "--title", type=str)
-parser.add_argument("-a", "--analysis", action="store_true")
 parser.add_argument(
     "-d", "--depth", type=int, default=1, help="header depth of title (default=1)"
 )
+uploader_parser = command.add_parser("uploader")
+uploader_parser.add_argument("json_filename", type=str)
+
+analysis_parser = command.add_parser("analysis")
+analysis_parser.add_argument("json_filename", type=str)
+
 args = parser.parse_args()
 
 
@@ -81,7 +86,7 @@ def uploader_spec(
                 optional,
                 at_least_one_required,
                 at_least_one_required_headers,
-                prefix=k + ".",
+                prefix="┗━━" + k + ".",
             )
 
     return required, at_least_one_required, optional
@@ -106,7 +111,7 @@ def analysis_spec(fields, spec, prefix=""):
         spec.append(row)
 
         if v["type"] == "relation":
-            analysis_spec(v["fields"], spec, prefix=k + ".")
+            analysis_spec(v["fields"], spec, prefix="┗━━" + k + ".")
 
     return spec
 
@@ -116,10 +121,10 @@ if args.title:
     print()
 
 
-if not args.analysis:
+if args.command == "uploader":
     required = [
         [
-            "Field name" + "&nbsp;" * 40,
+            "Field" + "&nbsp;" * 40,
             "Data type",
             "Description",
             "Restrictions",
@@ -147,10 +152,11 @@ if not args.analysis:
 
     print("#" * args.depth + "# Optional fields\n")
     print("".join(["| " + " | ".join(row) + " |\n" for row in optional]))
-else:
+
+elif args.command == "analysis":
     spec = [
         [
-            "Field name" + "&nbsp;" * 40,
+            "Field" + "&nbsp;" * 40,
             "Data type",
             "Description",
             "Restrictions",
