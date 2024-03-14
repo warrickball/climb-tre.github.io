@@ -21,9 +21,9 @@ jobs:
           restore-keys: |
             mkdocs-material-
       - run: |
-          python3 metadata/json2md.py uploader metadata/mscape.json -d 2 >> docs/mscape.md
-          python3 metadata/json2md.py analysis metadata/mscape-analysis.json -d 2 >> docs/mscape-analysis.md
-          python3 metadata/json2md.py uploader metadata/pathsafe.json -d 2 >> docs/pathsafe.md
+          python3 metadata/json2md.py -d 2 uploader metadata/mscape.json >> docs/mscape.md
+          python3 metadata/json2md.py -d 2 analysis metadata/mscape-analysis.json >> docs/mscape-analysis.md
+          python3 metadata/json2md.py -d 2 uploader metadata/pathsafe.json  >> docs/pathsafe.md
           wget https://raw.githubusercontent.com/CLIMB-TRE/onyx-client/master/README.md -O docs/onyx_client_installation_guide.md
           # pip install 'onyx @ git+https://github.com/CLIMB-TRE/onyx-client@0b791a8237e0418aa42a2e0f98bac587d7afb95a'
           pip install climb-onyx-client
