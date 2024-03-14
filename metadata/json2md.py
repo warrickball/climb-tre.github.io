@@ -86,7 +86,7 @@ def uploader_spec(
                 optional,
                 at_least_one_required,
                 at_least_one_required_headers,
-                prefix="┗━━" + k + ".",
+                prefix=k + ".",
             )
 
     return required, at_least_one_required, optional
@@ -111,7 +111,7 @@ def analysis_spec(fields, spec, prefix=""):
         spec.append(row)
 
         if v["type"] == "relation":
-            analysis_spec(v["fields"], spec, prefix="┗━━" + k + ".")
+            analysis_spec(v["fields"], spec, prefix=k + ".")
 
     return spec
 
