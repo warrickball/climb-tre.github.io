@@ -56,9 +56,16 @@ def uploader_spec(
                     restrictions.append("• " + ": ".join([condition, f"`{value}`"]))
 
         if v.get("values"):
-            restrictions.append(
-                "• Choices: " + ", ".join([f"`{val}`" for val in v["values"]])
-            )
+            if len(v["values"]) > 20:
+                restrictions.append(
+                    "• Choices: "
+                    + ", ".join([f"`{val}`" for val in v["values"][:20]])
+                    + ", ..."
+                )
+            else:
+                restrictions.append(
+                    "• Choices: " + ", ".join([f"`{val}`" for val in v["values"]])
+                )
 
         row = [
             f"`{prefix}{k}`",
@@ -97,9 +104,16 @@ def analysis_spec(fields, spec, prefix=""):
         restrictions = []
 
         if v.get("values"):
-            restrictions.append(
-                "• Choices: " + ", ".join([f"`{val}`" for val in v["values"]])
-            )
+            if len(v["values"]) > 20:
+                restrictions.append(
+                    "• Choices: "
+                    + ", ".join([f"`{val}`" for val in v["values"][:20]])
+                    + ", ..."
+                )
+            else:
+                restrictions.append(
+                    "• Choices: " + ", ".join([f"`{val}`" for val in v["values"]])
+                )
 
         row = [
             f"`{prefix}{k}`",
