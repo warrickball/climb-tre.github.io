@@ -103,6 +103,12 @@ def analysis_spec(fields, spec, prefix=""):
     for k, v in fields.items():
         restrictions = []
 
+        if v.get("restrictions"):
+            for restriction in v["restrictions"]:
+                condition, _, value = restriction.partition(": ")
+                if "output format" in condition.lower():
+                    restrictions.append("• " + ": ".join([condition, f"`{value}`"]))
+
         if v.get("values"):
             if len(v["values"]) > 20:
                 restrictions.append(
