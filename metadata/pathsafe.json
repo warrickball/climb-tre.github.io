@@ -44,7 +44,7 @@
                 "add"
             ],
             "restrictions": [
-                "Max length: 50"
+                "Max length: 100"
             ]
         },
         "sample_accession": {
@@ -65,18 +65,26 @@
         },
         "collection_date": {
             "description": "Date of sample collection.",
-            "type": "date (YYYY-MM)",
+            "type": "date",
             "required": false,
             "actions": [
                 "add"
+            ],
+            "restrictions": [
+                "Input formats: YYYY-MM",
+                "Output format: YYYY-MM"
             ]
         },
         "receipt_date": {
             "description": "Date of receipt of the sample.",
-            "type": "date (YYYY-MM)",
+            "type": "date",
             "required": false,
             "actions": [
                 "add"
+            ],
+            "restrictions": [
+                "Input formats: YYYY-MM",
+                "Output format: YYYY-MM"
             ]
         },
         "month": {
@@ -103,12 +111,12 @@
                 "add"
             ],
             "values": [
-                "APHA",
-                "FSA",
-                "FSS",
-                "PHS",
+                "UKHSA",
                 "SSSCDRL",
-                "UKHSA"
+                "APHA",
+                "FSS",
+                "FSA",
+                "PHS"
             ]
         },
         "sequence_org_other": {
@@ -130,14 +138,14 @@
                 "add"
             ],
             "values": [
+                "UKHSA",
+                "SSSCDRL",
                 "APHA",
-                "FSA",
                 "FSS",
-                "OTHER",
+                "FSA",
                 "PHS",
                 "PHW",
-                "SSSCDRL",
-                "UKHSA"
+                "OTHER"
             ]
         },
         "data_steward_other": {
@@ -159,19 +167,19 @@
                 "add"
             ],
             "values": [
-                "animal",
-                "animal_associated_environment",
-                "environment",
-                "food",
-                "food_associated_environment",
                 "human",
+                "animal",
+                "food",
+                "environment",
                 "human_associated_environment",
+                "animal_associated_environment",
+                "food_associated_environment",
+                "other_environment",
+                "other",
                 "missing",
                 "not_applicable",
                 "not_collected",
                 "not_provided",
-                "other",
-                "other_environment",
                 "restricted_access"
             ]
         },
@@ -428,18 +436,18 @@
                 "add"
             ],
             "values": [
-                "active_surveillance",
-                "not_applicable",
-                "not_collected",
-                "not_provided",
-                "other",
+                "routine_surveillance",
+                "routine_diagnostics",
                 "outbreak_initiated_surveillance",
                 "outbreak_investigation",
                 "population_based_surveillance",
+                "active_surveillance",
                 "research",
+                "not_applicable",
+                "not_collected",
+                "not_provided",
                 "restricted_access",
-                "routine_diagnostics",
-                "routine_surveillance"
+                "other"
             ]
         },
         "sample_purpose_other": {
