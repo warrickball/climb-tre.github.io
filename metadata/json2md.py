@@ -52,6 +52,18 @@ def uploader_spec(
                             )
                         )
                     )
+                elif "input formats" in condition.lower():
+                    restrictions.append(
+                        "• "
+                        + ": ".join(
+                            [
+                                condition,
+                                ", ".join(
+                                    [f"`{val.strip()}`" for val in value.split(",")]
+                                ),
+                            ]
+                        )
+                    )
                 else:
                     restrictions.append("• " + ": ".join([condition, f"`{value}`"]))
 
