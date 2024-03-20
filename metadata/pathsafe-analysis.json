@@ -18,12 +18,16 @@
         },
         "published_date": {
             "description": "The date the project record was published in Onyx.",
-            "type": "date (YYYY-MM-DD)",
+            "type": "date",
             "required": true,
             "actions": [
                 "get",
                 "list",
                 "filter"
+            ],
+            "restrictions": [
+                "Input formats: iso-8601",
+                "Output format: iso-8601"
             ]
         },
         "site": {
@@ -36,12 +40,12 @@
                 "filter"
             ],
             "values": [
-                "APHA",
-                "FSA",
-                "FSS",
-                "PHS",
+                "UKHSA",
                 "SSSCDRL",
-                "UKHSA"
+                "APHA",
+                "FSS",
+                "FSA",
+                "PHS"
             ]
         },
         "biosample_id": {
@@ -80,7 +84,7 @@
                 "filter"
             ],
             "restrictions": [
-                "Max length: 50"
+                "Max length: 100"
             ]
         },
         "platform": {
@@ -118,22 +122,30 @@
         },
         "collection_date": {
             "description": "Date of sample collection.",
-            "type": "date (YYYY-MM)",
+            "type": "date",
             "required": false,
             "actions": [
                 "get",
                 "list",
                 "filter"
+            ],
+            "restrictions": [
+                "Input formats: YYYY-MM",
+                "Output format: YYYY-MM"
             ]
         },
         "receipt_date": {
             "description": "Date of receipt of the sample.",
-            "type": "date (YYYY-MM)",
+            "type": "date",
             "required": false,
             "actions": [
                 "get",
                 "list",
                 "filter"
+            ],
+            "restrictions": [
+                "Input formats: YYYY-MM",
+                "Output format: YYYY-MM"
             ]
         },
         "month": {
@@ -166,12 +178,12 @@
                 "filter"
             ],
             "values": [
-                "APHA",
-                "FSA",
-                "FSS",
-                "PHS",
+                "UKHSA",
                 "SSSCDRL",
-                "UKHSA"
+                "APHA",
+                "FSS",
+                "FSA",
+                "PHS"
             ]
         },
         "sequence_org_other": {
@@ -197,14 +209,14 @@
                 "filter"
             ],
             "values": [
+                "UKHSA",
+                "SSSCDRL",
                 "APHA",
-                "FSA",
                 "FSS",
-                "OTHER",
+                "FSA",
                 "PHS",
                 "PHW",
-                "SSSCDRL",
-                "UKHSA"
+                "OTHER"
             ]
         },
         "data_steward_other": {
@@ -230,19 +242,19 @@
                 "filter"
             ],
             "values": [
-                "animal",
-                "animal_associated_environment",
-                "environment",
-                "food",
-                "food_associated_environment",
                 "human",
+                "animal",
+                "food",
+                "environment",
                 "human_associated_environment",
+                "animal_associated_environment",
+                "food_associated_environment",
+                "other_environment",
+                "other",
                 "missing",
                 "not_applicable",
                 "not_collected",
                 "not_provided",
-                "other",
-                "other_environment",
                 "restricted_access"
             ]
         },
@@ -505,18 +517,18 @@
                 "filter"
             ],
             "values": [
-                "active_surveillance",
-                "not_applicable",
-                "not_collected",
-                "not_provided",
-                "other",
+                "routine_surveillance",
+                "routine_diagnostics",
                 "outbreak_initiated_surveillance",
                 "outbreak_investigation",
                 "population_based_surveillance",
+                "active_surveillance",
                 "research",
+                "not_applicable",
+                "not_collected",
+                "not_provided",
                 "restricted_access",
-                "routine_diagnostics",
-                "routine_surveillance"
+                "other"
             ]
         },
         "sample_purpose_other": {
