@@ -33,6 +33,8 @@ theme:
 
 plugins:
   - search
+  - macros:
+      include_dir: include
   - mkdocstrings:
       default_handler: python
       handlers:

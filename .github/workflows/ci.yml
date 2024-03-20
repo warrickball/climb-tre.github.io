@@ -31,5 +31,6 @@ jobs:
           pip install 'varys @ git+https://github.com/CLIMB-TRE/varys@ed2356a9d8de27cee05622710ad2fb23408c1e40'
           pip install mkdocs-material
           pip install mkdocstrings[python]
+          pip install mkdocs-macros-plugin
           pip install mkdocs-with-pdf
       - run: mkdocs gh-deploy --force
