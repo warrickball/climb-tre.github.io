@@ -40,12 +40,12 @@
                 "filter"
             ],
             "values": [
-                "UKHSA",
-                "SSSCDRL",
                 "APHA",
-                "FSS",
                 "FSA",
-                "PHS"
+                "FSS",
+                "PHS",
+                "SSSCDRL",
+                "UKHSA"
             ]
         },
         "biosample_id": {
@@ -178,12 +178,12 @@
                 "filter"
             ],
             "values": [
-                "UKHSA",
-                "SSSCDRL",
                 "APHA",
-                "FSS",
                 "FSA",
-                "PHS"
+                "FSS",
+                "PHS",
+                "SSSCDRL",
+                "UKHSA"
             ]
         },
         "sequence_org_other": {
@@ -209,14 +209,14 @@
                 "filter"
             ],
             "values": [
-                "UKHSA",
-                "SSSCDRL",
                 "APHA",
-                "FSS",
                 "FSA",
+                "FSS",
+                "OTHER",
                 "PHS",
                 "PHW",
-                "OTHER"
+                "SSSCDRL",
+                "UKHSA"
             ]
         },
         "data_steward_other": {
@@ -242,19 +242,19 @@
                 "filter"
             ],
             "values": [
-                "human",
                 "animal",
-                "food",
-                "environment",
-                "human_associated_environment",
                 "animal_associated_environment",
+                "environment",
+                "food",
                 "food_associated_environment",
-                "other_environment",
-                "other",
+                "human",
+                "human_associated_environment",
                 "missing",
                 "not_applicable",
                 "not_collected",
                 "not_provided",
+                "other",
+                "other_environment",
                 "restricted_access"
             ]
         },
@@ -517,18 +517,18 @@
                 "filter"
             ],
             "values": [
-                "routine_surveillance",
-                "routine_diagnostics",
-                "outbreak_initiated_surveillance",
-                "outbreak_investigation",
-                "population_based_surveillance",
                 "active_surveillance",
-                "research",
                 "not_applicable",
                 "not_collected",
                 "not_provided",
+                "other",
+                "outbreak_initiated_surveillance",
+                "outbreak_investigation",
+                "population_based_surveillance",
+                "research",
                 "restricted_access",
-                "other"
+                "routine_diagnostics",
+                "routine_surveillance"
             ]
         },
         "sample_purpose_other": {

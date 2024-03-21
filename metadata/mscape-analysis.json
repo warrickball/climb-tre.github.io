@@ -41,9 +41,9 @@
             ],
             "values": [
                 "bham",
-                "ukhsa",
                 "gstt",
-                "public"
+                "public",
+                "ukhsa"
             ]
         },
         "biosample_id": {
@@ -109,21 +109,44 @@
                 "filter"
             ],
             "values": [
-                "positive_control",
-                "negative_control",
                 "community_standard",
+                "negative_control",
+                "positive_control",
                 "specimen",
                 "validation_material"
             ]
         },
-        "input_type_details": {
-            "description": "Named control or standard, or respiratory_infection if sample.",
+        "specimen_type_details": {
+            "description": "Named control or standard for specimens.",
             "type": "choice",
             "required": false,
             "actions": [
                 "get",
                 "list",
                 "filter"
+            ],
+            "values": [
+                "respiratory_infection"
+            ],
+            "restrictions": [
+                "Required when input_type is: specimen"
+            ]
+        },
+        "control_type_details": {
+            "description": "Named control or standard for positive and negative controls.",
+            "type": "choice",
+            "required": false,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ],
+            "values": [
+                "water_extraction_control"
+            ],
+            "restrictions": [
+                "Required when input_type is: positive_control",
+                "Required when input_type is: negative_control"
             ]
         },
         "sample_source": {
@@ -136,17 +159,17 @@
                 "filter"
             ],
             "values": [
-                "nose_and_throat",
-                "upper_respiratory",
-                "lower_respiratory",
-                "faecal",
-                "tissue",
-                "stool",
                 "blood",
-                "plasma",
-                "urine",
                 "environment",
-                "other"
+                "faecal",
+                "lower_respiratory",
+                "nose_and_throat",
+                "other",
+                "plasma",
+                "stool",
+                "tissue",
+                "upper_respiratory",
+                "urine"
             ]
         },
         "sample_type": {
@@ -159,12 +182,25 @@
                 "filter"
             ],
             "values": [
-                "swab",
-                "sputum",
-                "bal",
                 "aspirate",
+                "bal",
                 "biopsy",
-                "other"
+                "other",
+                "sputum",
+                "swab"
+            ]
+        },
+        "spike_in": {
+            "description": "The type of spike-in used in the run.",
+            "type": "choice",
+            "required": true,
+            "actions": [
+                "get",
+                "list",
+                "filter"
+            ],
+            "values": [
+                "none"
             ]
         },
         "collection_date": {
@@ -221,30 +257,14 @@
                 "Max length: 100"
             ]
         },
-        "spike_in": {
-            "description": "The type of spike-in used in the run.",
+        "study_id": {
+            "description": "Used to identify study or if NHS residual sample.",
             "type": "choice",
             "required": false,
             "actions": [
                 "get",
                 "list",
                 "filter"
-            ],
-            "values": [
-                "other"
-            ]
-        },
-        "study_id": {
-            "description": "Used to identify study or if NHS residual sample.",
-            "type": "text",
-            "required": false,
-            "actions": [
-                "get",
-                "list",
-                "filter"
-            ],
-            "restrictions": [
-                "Max length: 100"
             ]
         },
         "study_centre_id": {
@@ -610,8 +630,8 @@
                 "filter"
             ],
             "values": [
-                "SRA",
-                "ENA"
+                "ENA",
+                "SRA"
             ]
         },
         "public_database_accession": {
@@ -861,16 +881,16 @@
                         "filter"
                     ],
                     "values": [
-                        "U",
-                        "R",
-                        "D",
-                        "K",
-                        "P",
                         "C",
-                        "O",
+                        "D",
                         "F",
                         "G",
-                        "S"
+                        "K",
+                        "O",
+                        "P",
+                        "R",
+                        "S",
+                        "U"
                     ]
                 },
                 "fastq_1": {
@@ -956,16 +976,16 @@
                         "filter"
                     ],
                     "values": [
-                        "U",
-                        "R",
-                        "D",
-                        "K",
-                        "P",
                         "C",
-                        "O",
+                        "D",
                         "F",
                         "G",
-                        "S"
+                        "K",
+                        "O",
+                        "P",
+                        "R",
+                        "S",
+                        "U"
                     ]
                 },
                 "raw_rank": {
