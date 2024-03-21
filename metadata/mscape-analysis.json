@@ -41,9 +41,9 @@
             ],
             "values": [
                 "bham",
-                "ukhsa",
                 "gstt",
-                "public"
+                "public",
+                "ukhsa"
             ]
         },
         "biosample_id": {
@@ -109,9 +109,9 @@
                 "filter"
             ],
             "values": [
-                "positive_control",
-                "negative_control",
                 "community_standard",
+                "negative_control",
+                "positive_control",
                 "specimen",
                 "validation_material"
             ]
@@ -159,17 +159,17 @@
                 "filter"
             ],
             "values": [
-                "nose_and_throat",
-                "upper_respiratory",
-                "lower_respiratory",
-                "faecal",
-                "tissue",
-                "stool",
                 "blood",
-                "plasma",
-                "urine",
                 "environment",
-                "other"
+                "faecal",
+                "lower_respiratory",
+                "nose_and_throat",
+                "other",
+                "plasma",
+                "stool",
+                "tissue",
+                "upper_respiratory",
+                "urine"
             ]
         },
         "sample_type": {
@@ -182,12 +182,12 @@
                 "filter"
             ],
             "values": [
-                "swab",
-                "sputum",
-                "bal",
                 "aspirate",
+                "bal",
                 "biopsy",
-                "other"
+                "other",
+                "sputum",
+                "swab"
             ]
         },
         "spike_in": {
@@ -630,8 +630,8 @@
                 "filter"
             ],
             "values": [
-                "SRA",
-                "ENA"
+                "ENA",
+                "SRA"
             ]
         },
         "public_database_accession": {
@@ -881,16 +881,16 @@
                         "filter"
                     ],
                     "values": [
-                        "U",
-                        "R",
-                        "D",
-                        "K",
-                        "P",
                         "C",
-                        "O",
+                        "D",
                         "F",
                         "G",
-                        "S"
+                        "K",
+                        "O",
+                        "P",
+                        "R",
+                        "S",
+                        "U"
                     ]
                 },
                 "fastq_1": {
@@ -976,16 +976,16 @@
                         "filter"
                     ],
                     "values": [
-                        "U",
-                        "R",
-                        "D",
-                        "K",
-                        "P",
                         "C",
-                        "O",
+                        "D",
                         "F",
                         "G",
-                        "S"
+                        "K",
+                        "O",
+                        "P",
+                        "R",
+                        "S",
+                        "U"
                     ]
                 },
                 "raw_rank": {
