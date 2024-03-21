@@ -55,9 +55,9 @@
                 "add"
             ],
             "values": [
-                "positive_control",
-                "negative_control",
                 "community_standard",
+                "negative_control",
+                "positive_control",
                 "specimen",
                 "validation_material"
             ]
@@ -99,17 +99,17 @@
                 "add"
             ],
             "values": [
-                "nose_and_throat",
-                "upper_respiratory",
-                "lower_respiratory",
-                "faecal",
-                "tissue",
-                "stool",
                 "blood",
-                "plasma",
-                "urine",
                 "environment",
-                "other"
+                "faecal",
+                "lower_respiratory",
+                "nose_and_throat",
+                "other",
+                "plasma",
+                "stool",
+                "tissue",
+                "upper_respiratory",
+                "urine"
             ]
         },
         "sample_type": {
@@ -120,12 +120,12 @@
                 "add"
             ],
             "values": [
-                "swab",
-                "sputum",
-                "bal",
                 "aspirate",
+                "bal",
                 "biopsy",
-                "other"
+                "other",
+                "sputum",
+                "swab"
             ]
         },
         "spike_in": {
@@ -532,8 +532,8 @@
                 "add"
             ],
             "values": [
-                "SRA",
-                "ENA"
+                "ENA",
+                "SRA"
             ]
         },
         "public_database_accession": {
