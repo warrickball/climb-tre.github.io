@@ -52,6 +52,11 @@ def uploader_spec(
                             )
                         )
                     )
+                elif "required when" in condition.lower():
+                    statement = condition.split()
+                    statement[2] = f"`{statement[2]}`"
+                    condition = " ".join(statement)
+                    restrictions.append("• " + ": ".join([condition, f"`{value}`"]))
                 elif "input formats" in condition.lower():
                     restrictions.append(
                         "• "
